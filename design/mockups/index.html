@@ -4051,5 +4051,186 @@ body {
   </div>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/motion@10.18.0/dist/motion.min.js"></script>
+<script>
+(function(){
+  const M = window.Motion;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced || !M) return;
+
+  const { animate, inView, stagger } = M;
+  const ease = [0.16, 1, 0.3, 1]; // ease-out-quart, no bounce
+
+  /* ============ One-shot reveals on first view ============ */
+
+  // Header — on load
+  animate('.sheet > header > *',
+    { opacity: [0, 1], y: [14, 0] },
+    { delay: stagger(0.08), duration: 0.75, easing: ease }
+  );
+
+  // Section H2s
+  inView('.sheet h2', (info) => {
+    animate(info.target,
+      { opacity: [0, 1], y: [10, 0] },
+      { duration: 0.6, easing: ease }
+    );
+  }, { amount: 0.2 });
+
+  // Mobile frames — stagger per row
+  document.querySelectorAll('.mobile-grid').forEach(grid => {
+    inView(grid, (info) => {
+      const frames = info.target.querySelectorAll('.frame-wrap');
+      animate(frames,
+        { opacity: [0, 1], y: [22, 0], scale: [0.97, 1] },
+        { delay: stagger(0.08), duration: 0.85, easing: ease }
+      );
+    }, { amount: 0.05 });
+  });
+
+  // Desktop frames
+  inView('.desktop-frame, .realm-desktop', (info) => {
+    animate(info.target,
+      { opacity: [0, 1], y: [24, 0] },
+      { duration: 0.95, easing: ease }
+    );
+  }, { amount: 0.05 });
+
+  // Tokens block + swatch stagger
+  inView('.tokens-block', (info) => {
+    animate(info.target,
+      { opacity: [0, 1], y: [18, 0] },
+      { duration: 0.7, easing: ease }
+    );
+    animate(info.target.querySelectorAll('.swatch'),
+      { opacity: [0, 1], y: [10, 0] },
+      { delay: stagger(0.04, { start: 0.18 }), duration: 0.5, easing: ease }
+    );
+  }, { amount: 0.1 });
+
+  /* ============ Continuous, subtle ambient motion ============ */
+
+  // Will card breathing — soul still alive
+  animate('.will-card',
+    { scale: [1, 1.006, 1] },
+    { duration: 7, repeat: Infinity, easing: 'ease-in-out' }
+  );
+
+  // Mood ring slow rotation
+  animate('.feeling-card .ring',
+    { rotate: [0, 360] },
+    { duration: 90, repeat: Infinity, easing: 'linear' }
+  );
+
+  // Death flame irregular flicker
+  animate('.death-flame',
+    { opacity: [0.4, 0.55, 0.32, 0.5, 0.42, 0.48, 0.4],
+      scale: [1, 1.06, 0.97, 1.04, 1, 1.02, 1] },
+    { duration: 4.2, repeat: Infinity, easing: 'ease-in-out' }
+  );
+
+  // Hero illustration sun gentle pulse
+  animate('.hero-illust circle[r="50"]',
+    { opacity: [0.9, 1, 0.9] },
+    { duration: 5, repeat: Infinity, easing: 'ease-in-out' }
+  );
+
+  // Frame-label dot ring pulse
+  animate('.frame-label .dot',
+    { boxShadow: [
+        '0 0 0 4px oklch(0.94 0.045 40)',
+        '0 0 0 8px oklch(0.94 0.045 40 / 0.3)',
+        '0 0 0 4px oklch(0.94 0.045 40)'
+      ] },
+    { duration: 3.4, repeat: Infinity, easing: 'ease-in-out' }
+  );
+
+  // Activity items: very subtle "wake" — fade between full and 96% opacity
+  // (gives "alive feed" feel without distraction)
+  // Skipped — too noisy. Hover only.
+
+  /* ============ Hover lifts (desktop only via pointer) ============ */
+
+  const lifters = document.querySelectorAll(
+    '.entry, .feed-entry, .rail-card, .opt-card, .provider-card, ' +
+    '.activity-item, .death-card, .now-card, .k-row'
+  );
+  lifters.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      animate(card, { y: -3 }, { duration: 0.26, easing: ease });
+    });
+    card.addEventListener('mouseleave', () => {
+      animate(card, { y: 0 }, { duration: 0.30, easing: ease });
+    });
+  });
+
+  // Mobile frames: gentle float-on-hover (preview affordance in sheet)
+  document.querySelectorAll('.mobile-frame, .desktop-frame, .realm-desktop').forEach(frame => {
+    frame.addEventListener('mouseenter', () => {
+      animate(frame, { y: -6 }, { duration: 0.36, easing: ease });
+    });
+    frame.addEventListener('mouseleave', () => {
+      animate(frame, { y: 0 }, { duration: 0.36, easing: ease });
+    });
+  });
+
+  /* ============ Press feedback on actionable elements ============ */
+
+  const pressables = document.querySelectorAll(
+    '.onboard-cta, .inscribe, .botnav a, .chip, .lang-toggle .seg, ' +
+    '.key-test, .will-card footer button, .more-providers, ' +
+    '.realm-zoom button, .toggle, .onboard-secondary, .signout'
+  );
+  pressables.forEach(btn => {
+    const down = () => animate(btn, { scale: 0.96 }, { duration: 0.08 });
+    const up   = () => animate(btn, { scale: 1 }, { duration: 0.22, easing: ease });
+    btn.addEventListener('pointerdown', down);
+    btn.addEventListener('pointerup', up);
+    btn.addEventListener('pointerleave', up);
+  });
+
+  /* ============ "You" dot on the realm maps — gentle wander ============ */
+  // The existing SVG <animate> drives the pulse; here we add a soft drift
+  // for the YOU character (a few pixels every several seconds).
+  // We target the realm-svg's "you" group through a transform-friendly wrapper.
+  document.querySelectorAll('.realm-svg').forEach(svg => {
+    const youGroup = svg.querySelector('g[transform*="translate(118"], g[transform*="translate(255"]');
+    if (!youGroup) return;
+    // soft idle breathing on the avatar dot — independent of SVG <animate>
+    animate(youGroup,
+      { opacity: [1, 0.85, 1] },
+      { duration: 5, repeat: Infinity, easing: 'ease-in-out' }
+    );
+  });
+
+  /* ============ Trade routes draw-in once per map view ============ */
+  // dasharray draw illusion: animate dashoffset
+  inView('.realm-svg', (info) => {
+    const dashedPaths = info.target.querySelectorAll(
+      'path[stroke-dasharray*="2 4"], path[stroke-dasharray*="3 5"], path[stroke-dasharray*="5 4"], path[stroke-dasharray*="6 4"]'
+    );
+    dashedPaths.forEach(p => {
+      const len = (() => { try { return p.getTotalLength(); } catch(e) { return 200; } })();
+      p.style.strokeDasharray = len;
+      p.style.strokeDashoffset = len;
+      animate(p,
+        { strokeDashoffset: [len, 0] },
+        { duration: 1.6, easing: ease }
+      );
+    });
+  }, { amount: 0.2 });
+
+  /* ============ Status pills in feeling-card: gentle stagger entrance ============ */
+  inView('.feeling-card .pills', (info) => {
+    animate(info.target.querySelectorAll('.pill'),
+      { opacity: [0, 1], y: [6, 0] },
+      { delay: stagger(0.06, { start: 0.15 }), duration: 0.5, easing: ease }
+    );
+  }, { amount: 0.5 });
+
+})();
+</script>
+
 </body>
 </html>
