@@ -1,6 +1,9 @@
-# Open Questions — รอ grill ให้ resolve
+# Open Questions
 
-คำถามที่ยังไม่ตัดสินใจ เรียงตามผลกระทบ ตัวไหน resolve แล้วให้ย้ายไปเป็น ADR หรืออัปเดต CONTEXT.md
+> 🎉 **สถานะ:** Q1-Q10 resolve ครบแล้วในวันที่ 2026-06-11 ผ่าน grill-with-docs session
+> Implementation questions ถัดไปอยู่ใน [ROADMAP-PHASE-0.md §8](./ROADMAP-PHASE-0.md)
+
+คำถามที่ resolve แล้ว — เก็บไว้เป็น log ของการตัดสินใจ
 
 ---
 
