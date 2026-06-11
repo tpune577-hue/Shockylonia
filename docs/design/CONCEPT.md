@@ -1,4 +1,4 @@
-# Shockylonia — Concept & Design
+# Shocky Topia — Concept & Design
 
 สถานะ: **Draft / Pre-prototype** · ภาษา domain ดู [`../../CONTEXT.md`](../../CONTEXT.md)
 
@@ -56,7 +56,7 @@ Player เขียน Will Document ตอนสร้าง Character:
 
 ```yaml
 identity: "พ่อค้าคนแคระผู้รักสันติ แต่จดจำทุกคนที่โกงเขา"
-goal: "สร้างเครือข่ายการค้าใหญ่ที่สุดใน Shockylonia"
+goal: "สร้างเครือข่ายการค้าใหญ่ที่สุดใน Shocky Topia"
 values:
   - ไม่เริ่มสงครามก่อน แต่ตอบโต้เสมอ
   - ขายเมื่อกำไร 20%+ เท่านั้น

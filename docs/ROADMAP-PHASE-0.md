@@ -1,4 +1,4 @@
-# Phase 0 Roadmap — Shockylonia Prototype
+# Phase 0 Roadmap — Shocky Topia Prototype
 
 > สถานะ: **Planned** · เป้าหมาย: ทดสอบ loop หลักกับเพื่อน 5-10 คนภายใน ~7 สัปดาห์
 > ปรับ scope จาก CONCEPT.md §11 หลัง grill session 2026-06-11

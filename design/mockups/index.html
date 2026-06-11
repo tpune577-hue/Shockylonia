@@ -1,0 +1,2620 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Shocky Topia · Phase 0 UI Mockups</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,500;9..144,600;9..144,700&family=Nunito:wght@400;500;600;700;800&family=Mitr:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        oklch(0.985 0.012 230);
+  --surface:   oklch(0.97  0.015 230);
+  --surface-2: oklch(0.935 0.020 230);
+  --surface-3: oklch(0.89  0.025 230);
+  --border:    oklch(0.85  0.025 230);
+  --border-soft: oklch(0.91 0.020 230);
+
+  --ink:       oklch(0.22  0.030 258);
+  --ink-soft:  oklch(0.35  0.025 258);
+  --muted:     oklch(0.50  0.022 258);
+  --muted-2:   oklch(0.62  0.018 258);
+
+  --primary:        oklch(0.55 0.180 258);
+  --primary-soft:   oklch(0.92 0.060 258);
+  --primary-deep:   oklch(0.40 0.150 258);
+
+  --accent:         oklch(0.72 0.180 35);
+  --accent-soft:    oklch(0.94 0.045 40);
+  --accent-deep:    oklch(0.55 0.150 30);
+
+  --meadow:         oklch(0.58 0.140 150);
+  --meadow-soft:    oklch(0.93 0.045 150);
+
+  --amber:          oklch(0.78 0.160 75);
+  --amber-soft:     oklch(0.95 0.050 80);
+
+  --danger:         oklch(0.60 0.180 25);
+
+  --serif: 'Fraunces', 'Mitr', Georgia, serif;
+  --sans:  'Nunito', 'Mitr', system-ui, -apple-system, sans-serif;
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-pill: 9999px;
+
+  --shadow-soft: 0 8px 24px -8px oklch(0.45 0.08 258 / 0.12), 0 2px 8px oklch(0.45 0.06 258 / 0.06);
+  --shadow-raised: 0 20px 50px -16px oklch(0.4 0.10 258 / 0.18), 0 4px 12px oklch(0.4 0.08 258 / 0.10);
+  --shadow-frame: 0 40px 80px -30px oklch(0.40 0.10 258 / 0.30), 0 10px 30px -10px oklch(0.40 0.08 258 / 0.15);
+  --shadow-card: 0 12px 32px -12px oklch(0.45 0.08 258 / 0.15), 0 2px 6px oklch(0.45 0.06 258 / 0.04);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  background:
+    radial-gradient(ellipse 120% 80% at 50% 0%, oklch(0.96 0.035 35 / 0.4), transparent 60%),
+    radial-gradient(ellipse 100% 60% at 0% 100%, oklch(0.94 0.040 220 / 0.5), transparent 55%),
+    radial-gradient(ellipse 100% 60% at 100% 30%, oklch(0.95 0.030 150 / 0.4), transparent 60%),
+    oklch(0.985 0.010 230);
+  background-attachment: fixed;
+  color: var(--ink);
+}
+body {
+  font-family: var(--sans);
+  font-feature-settings: "tnum" 1, "ss01" 1;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  min-height: 100vh;
+  padding: 4rem 1.5rem 6rem;
+}
+
+/* ===== Sheet ===== */
+.sheet { max-width: 1440px; margin: 0 auto; }
+.sheet header { margin-bottom: 4rem; max-width: 760px; }
+.sheet header .eyebrow {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  background: var(--accent-soft);
+  padding: 0.375rem 0.875rem;
+  border-radius: var(--radius-pill);
+  margin-bottom: 1.25rem;
+}
+.sheet header .eyebrow::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+.sheet header h1 {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 144, "SOFT" 100, "wght" 500;
+  font-size: clamp(2.25rem, 1.6rem + 2.8vw, 3.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.022em;
+  text-wrap: balance;
+  margin-bottom: 1.25rem;
+  color: var(--ink);
+}
+.sheet header h1 em {
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 100, "wght" 400;
+  color: var(--accent-deep);
+}
+.sheet header p {
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 60ch;
+  font-weight: 500;
+}
+
+.sheet h2 {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 60, "SOFT" 100, "wght" 500;
+  font-size: 1.875rem;
+  letter-spacing: -0.018em;
+  margin: 5rem 0 2rem;
+  display: flex; align-items: baseline; gap: 1rem;
+}
+.sheet h2 small {
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+.mobile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 3rem 2.5rem;
+  align-items: start;
+  justify-items: center;
+}
+
+.frame-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.frame-label {
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.frame-label .dot {
+  width: 8px; height: 8px; background: var(--accent); border-radius: 50%;
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+/* ===== Mobile device frame ===== */
+.mobile-frame {
+  width: 360px;
+  height: 760px;
+  max-width: 100%;
+  background: var(--bg);
+  border-radius: 38px;
+  overflow: hidden;
+  box-shadow: var(--shadow-frame);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-soft);
+}
+
+/* ===== Top bar ===== */
+.topbar {
+  padding: 1.125rem 1.25rem 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+}
+.gametime-chip {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  padding: 0.4375rem 0.75rem 0.4375rem 0.625rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  letter-spacing: 0.01em;
+  box-shadow: var(--shadow-soft);
+}
+.gametime-chip .pulse {
+  width: 6px; height: 6px;
+  background: var(--meadow);
+  border-radius: 50%;
+  animation: pulse 3.4s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 var(--meadow); }
+  50% { opacity: 0.7; transform: scale(1.15); box-shadow: 0 0 0 4px oklch(0.58 0.14 150 / 0.18); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pulse { animation: none; }
+}
+.gametime-chip b { color: var(--ink); font-weight: 700; }
+.gametime-chip .sep { color: var(--muted-2); margin: 0 0.125rem; }
+
+.avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-soft), var(--primary-soft));
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 30, "SOFT" 100, "wght" 600;
+  font-size: 1rem;
+  color: var(--primary-deep);
+  box-shadow: var(--shadow-soft);
+  border: 2px solid oklch(1 0 0);
+}
+
+/* ===== Scroll content ===== */
+.screen-content { flex: 1; overflow-y: auto; padding-bottom: 1rem; }
+.screen-content::-webkit-scrollbar { display: none; }
+.screen-content { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ===== Bottom nav ===== */
+.botnav {
+  position: relative;
+  margin: 0 0.875rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-pill);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 0.375rem;
+  box-shadow: var(--shadow-card);
+}
+.botnav a {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 0.125rem;
+  text-decoration: none;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  padding: 0.625rem 0.5rem;
+  border-radius: var(--radius-pill);
+  transition: all .18s ease;
+}
+.botnav a.active {
+  color: oklch(1 0 0);
+  background: var(--primary);
+}
+.botnav a.active .ic { color: oklch(1 0 0); }
+.botnav .ic {
+  width: 20px; height: 20px;
+  color: var(--muted);
+  display: block;
+}
+
+/* ===== Screen 1: World ===== */
+.now-card {
+  margin: 0.5rem 0.875rem 0;
+  padding: 1.25rem 1.25rem 1.125rem;
+  background: linear-gradient(155deg, oklch(0.96 0.05 35 / 0.5), oklch(0.97 0.025 220 / 0.4) 70%);
+  border-radius: var(--radius-lg);
+  position: relative;
+  border: 1px solid oklch(0.92 0.04 35);
+  box-shadow: var(--shadow-card);
+}
+.now-card .where {
+  font-family: var(--sans); font-size: 0.6875rem; font-weight: 800;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--accent-deep); margin-bottom: 0.625rem;
+  display: inline-flex; align-items: center; gap: 0.375rem;
+}
+.now-card .where::before {
+  content: ''; width: 5px; height: 5px;
+  background: var(--accent); border-radius: 50%;
+  box-shadow: 0 0 0 3px oklch(0.7 0.18 35 / 0.20);
+  animation: pulse 3.4s ease-in-out infinite;
+}
+.now-card h1 {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 50, "SOFT" 100, "wght" 500;
+  font-size: 1.4375rem; line-height: 1.18;
+  letter-spacing: -0.012em;
+  margin-bottom: 0.75rem; text-wrap: balance;
+  color: var(--ink);
+}
+.now-card h1 em {
+  font-style: italic;
+  font-variation-settings: "opsz" 50, "SOFT" 100, "wght" 500;
+  color: var(--accent-deep);
+}
+.now-card p {
+  font-family: var(--sans);
+  font-size: 0.875rem; line-height: 1.55;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+.now-card footer {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 0.875rem;
+  font-family: var(--sans); font-size: 0.75rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+.now-card footer a {
+  color: var(--primary); text-decoration: none; font-weight: 700;
+  display: inline-flex; align-items: center; gap: 0.25rem;
+}
+
+.section-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding: 1.625rem 1.5rem 0.875rem;
+}
+.section-head h3 {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 32, "SOFT" 100, "wght" 600;
+  font-size: 1.0625rem; letter-spacing: -0.008em;
+  color: var(--ink);
+}
+.section-head a {
+  font-family: var(--sans);
+  font-size: 0.75rem; font-weight: 700;
+  color: var(--primary); text-decoration: none;
+}
+
+/* Map preview — organic rounded tiles */
+.map-card {
+  margin: 0 0.875rem;
+  padding: 1rem;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-soft);
+}
+.map-grid {
+  display: grid;
+  grid-template-columns: repeat(13, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+  gap: 3px;
+  aspect-ratio: 13 / 7;
+}
+.map-grid .t {
+  border-radius: 5px;
+  background: oklch(0.94 0.025 220);
+}
+.map-grid .t.discovered { background: oklch(0.91 0.035 220); }
+.map-grid .t.forest { background: oklch(0.86 0.07 150); }
+.map-grid .t.water { background: oklch(0.88 0.07 230); }
+.map-grid .t.plains { background: oklch(0.93 0.05 90); }
+.map-grid .t.mountain { background: oklch(0.83 0.025 280); }
+.map-grid .t.you {
+  background: var(--accent);
+  box-shadow: 0 0 0 3px oklch(1 0 0), 0 0 0 5px var(--accent), 0 2px 10px oklch(0.7 0.18 35 / 0.45);
+  z-index: 2;
+}
+.map-grid .t.other {
+  background: var(--primary);
+  box-shadow: 0 0 0 2px oklch(1 0 0), 0 0 0 3px var(--primary);
+}
+.map-legend {
+  display: flex; gap: 1rem; margin-top: 0.75rem;
+  font-family: var(--sans); font-size: 0.6875rem; font-weight: 600;
+  color: var(--muted);
+}
+.map-legend span { display: inline-flex; align-items: center; gap: 0.375rem; }
+.map-legend i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+.activity-list { padding: 0.25rem 1.25rem 1.5rem; }
+.activity-item {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 0.875rem;
+  padding: 0.875rem 0;
+  align-items: start;
+}
+.activity-item + .activity-item { border-top: 1px dashed var(--border-soft); }
+.activity-item .ava {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-size: 0.875rem; font-weight: 700;
+  color: var(--ink);
+  font-variation-settings: "opsz" 30, "wght" 700;
+  flex-shrink: 0;
+}
+.ava.k { background: oklch(0.88 0.08 35); color: var(--accent-deep); }
+.ava.m { background: oklch(0.88 0.08 150); color: oklch(0.34 0.10 150); }
+.ava.b { background: oklch(0.88 0.08 258); color: var(--primary-deep); }
+.ava.t { background: oklch(0.90 0.07 75); color: oklch(0.42 0.13 75); }
+.ava.s { background: oklch(0.90 0.05 320); color: oklch(0.40 0.12 320); }
+.activity-item .body {
+  font-family: var(--sans);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+.activity-item .body b { color: var(--ink); font-weight: 700; }
+.activity-item .body em {
+  color: var(--accent-deep); font-style: italic;
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 14, "SOFT" 100, "wght" 500;
+}
+.activity-item .when {
+  font-family: var(--sans); font-size: 0.6875rem;
+  color: var(--muted); margin-top: 0.25rem; font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ===== Screen 2: Mine ===== */
+.char-hero {
+  padding: 1.25rem 1.25rem 1.5rem;
+  text-align: left;
+}
+.char-hero .row { display: flex; align-items: center; gap: 0.875rem; }
+.char-hero .ava-big {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-soft), var(--primary-soft));
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 48, "SOFT" 100, "wght" 600;
+  font-size: 1.5rem;
+  color: var(--accent-deep);
+  box-shadow: var(--shadow-card);
+  border: 3px solid oklch(1 0 0);
+  flex-shrink: 0;
+}
+.char-hero h1 {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 60, "SOFT" 100, "wght" 500;
+  font-size: 1.5rem; letter-spacing: -0.018em; line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 0.25rem;
+}
+.char-hero .sub {
+  font-family: var(--sans);
+  font-size: 0.8125rem; font-weight: 600;
+  color: var(--muted);
+}
+.char-hero .badges {
+  display: flex; gap: 0.375rem; margin-top: 1rem; flex-wrap: wrap;
+}
+.badge {
+  display: inline-flex; align-items: center; gap: 0.375rem;
+  padding: 0.3125rem 0.625rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--sans); font-size: 0.6875rem; font-weight: 700;
+  letter-spacing: 0.01em;
+  background: var(--primary-soft); color: var(--primary-deep);
+}
+.badge.meadow { background: var(--meadow-soft); color: oklch(0.32 0.10 150); }
+.badge.amber { background: var(--amber-soft); color: oklch(0.42 0.13 75); }
+.badge.accent { background: var(--accent-soft); color: var(--accent-deep); }
+.badge i { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+
+.status-card {
+  margin: 0 0.875rem;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  padding: 0.875rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-soft);
+}
+.s-cell {
+  padding: 0.75rem 0.875rem;
+  background: var(--bg);
+  border-radius: var(--radius-md);
+}
+.s-cell .l {
+  font-family: var(--sans); font-size: 0.6875rem; font-weight: 700;
+  color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase;
+  margin-bottom: 0.375rem;
+}
+.s-cell .v {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 24, "SOFT" 100, "wght" 600;
+  font-size: 1.0625rem;
+  color: var(--ink); margin-bottom: 0.5rem;
+  line-height: 1.1;
+}
+.s-cell .bar {
+  height: 4px;
+  background: var(--surface-3);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.s-cell .bar .fill { height: 100%; border-radius: 4px; }
+.s-cell .bar .fill.meadow { background: var(--meadow); }
+.s-cell .bar .fill.amber { background: var(--amber); }
+.s-cell .bar .fill.accent { background: var(--accent); }
+.s-cell .bar .fill.primary { background: var(--primary); }
+
+/* Will card */
+.will-card {
+  margin: 1.25rem 0.875rem 0;
+  padding: 1.5rem 1.25rem 1.25rem;
+  background: linear-gradient(160deg, oklch(0.97 0.045 35), oklch(0.96 0.035 50) 100%);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-raised);
+  position: relative;
+  border: 1px solid oklch(0.91 0.05 40);
+}
+.will-card::before {
+  content: '✿';
+  position: absolute; top: 1rem; right: 1.25rem;
+  color: var(--accent-deep);
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 32, "wght" 400;
+  font-size: 1.125rem;
+  opacity: 0.7;
+}
+.will-card .label {
+  font-family: var(--sans); font-size: 0.6875rem; font-weight: 800;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--accent-deep); margin-bottom: 0.625rem;
+}
+.will-card blockquote {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 24, "SOFT" 100, "wght" 400;
+  font-size: 1.0625rem; line-height: 1.55;
+  font-style: italic;
+  color: var(--ink); margin-bottom: 1rem;
+  text-wrap: pretty;
+}
+.will-card footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 0.875rem;
+  border-top: 1px solid oklch(0.90 0.04 40);
+}
+.will-card footer .meta {
+  font-family: var(--sans); font-size: 0.75rem; font-weight: 600;
+  color: var(--muted);
+}
+.will-card footer button {
+  font-family: var(--sans); font-size: 0.8125rem; font-weight: 700;
+  color: oklch(1 0 0);
+  background: var(--accent);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all .18s ease;
+  box-shadow: 0 4px 12px oklch(0.7 0.18 35 / 0.30);
+}
+.will-card footer button:hover { background: var(--accent-deep); }
+
+.recent-actions { padding: 0.25rem 1.25rem 1.25rem; }
+.action-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  align-items: center;
+}
+.action-row + .action-row { border-top: 1px dashed var(--border-soft); }
+.action-row .verb {
+  font-family: var(--sans);
+  font-size: 0.875rem; color: var(--ink-soft); font-weight: 500;
+  line-height: 1.4;
+}
+.action-row .verb b {
+  color: var(--ink); font-weight: 700;
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 18, "SOFT" 100, "wght" 600;
+  font-size: 0.9375rem;
+}
+.action-row .verb .time {
+  display: block;
+  font-size: 0.6875rem; color: var(--muted); margin-top: 0.125rem;
+  font-variant-numeric: tabular-nums;
+}
+.action-row .mode {
+  font-family: var(--sans);
+  font-size: 0.625rem; font-weight: 800;
+  padding: 0.25rem 0.625rem;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.05em; text-transform: uppercase;
+}
+.action-row .mode.agent {
+  color: var(--primary-deep); background: var(--primary-soft);
+}
+.action-row .mode.instinct {
+  color: oklch(0.32 0.10 150); background: var(--meadow-soft);
+}
+
+/* Token strip */
+.token-strip {
+  margin: 0.875rem 0.875rem 0;
+  padding: 0.875rem 1rem;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-soft);
+}
+.token-strip .meter-label {
+  font-family: var(--sans); font-size: 0.6875rem; font-weight: 700;
+  color: var(--muted); margin-bottom: 0.375rem;
+  letter-spacing: 0.04em; text-transform: uppercase;
+}
+.token-strip .meter {
+  height: 6px;
+  background: var(--surface-3);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+.token-strip .meter .fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+  border-radius: var(--radius-pill);
+}
+.token-strip .cap {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 24, "SOFT" 100, "wght" 600;
+  font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+.token-strip .cap small { color: var(--muted); font-weight: 500; margin-left: 4px; font-family: var(--sans); }
+
+/* ===== Screen 3: Chronicle ===== */
+.chronicle-head {
+  padding: 1.5rem 1.25rem 1rem;
+}
+.chronicle-head h1 {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 80, "SOFT" 100, "wght" 500;
+  font-size: 2rem; letter-spacing: -0.022em; line-height: 1;
+  margin-bottom: 0.5rem;
+  color: var(--ink);
+}
+.chronicle-head .desc {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 20, "SOFT" 100, "wght" 400;
+  font-size: 0.9375rem;
+  color: var(--muted); font-style: italic;
+}
+
+.chips {
+  display: flex; gap: 0.5rem;
+  padding: 0.5rem 1.25rem 0.75rem;
+  overflow-x: auto;
+}
+.chips::-webkit-scrollbar { display: none; }
+.chip {
+  font-family: var(--sans);
+  font-size: 0.8125rem; font-weight: 700;
+  padding: 0.4375rem 0.875rem;
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  color: var(--ink-soft);
+  white-space: nowrap;
+  cursor: pointer;
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-soft);
+}
+.chip.active {
+  background: var(--ink);
+  color: oklch(1 0 0);
+  border-color: var(--ink);
+}
+
+.chronicle-feed { padding: 0.75rem 1.25rem 1.5rem; }
+.epoch {
+  font-family: var(--sans);
+  font-size: 0.6875rem; font-weight: 800;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--accent-deep);
+  margin: 1.25rem 0 0.875rem;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.epoch::after {
+  content: ''; flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, oklch(0.7 0.18 35 / 0.4), transparent);
+}
+.entry {
+  margin-bottom: 1.25rem;
+  padding: 1rem 1.125rem;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--border-soft);
+}
+.entry .when {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-family: var(--sans);
+  font-size: 0.6875rem; font-weight: 700;
+  color: var(--muted); margin-bottom: 0.5rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+.entry .when .av {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-size: 0.6875rem; font-weight: 700;
+  font-variation-settings: "opsz" 20, "wght" 700;
+}
+.entry .body {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 18, "SOFT" 100, "wght" 400;
+  font-size: 0.9375rem; line-height: 1.55;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+.entry .body b {
+  color: var(--ink); font-weight: 600;
+  font-variation-settings: "opsz" 18, "SOFT" 100, "wght" 600;
+}
+.entry .body em { color: var(--accent-deep); font-style: italic; }
+
+/* ===== Screen 4: Will Editor ===== */
+.editor-frame {
+  background: linear-gradient(180deg, oklch(0.985 0.025 35) 0%, var(--bg) 35%);
+}
+.editor-bar {
+  padding: 1.125rem 1.25rem 0.875rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.editor-bar .left {
+  font-family: var(--sans);
+  font-size: 0.875rem; font-weight: 700;
+  color: var(--ink);
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.editor-bar .left .pen {
+  width: 24px; height: 24px;
+  background: var(--accent-soft);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent-deep);
+}
+.editor-bar .close {
+  font-family: var(--sans);
+  font-size: 0.8125rem; font-weight: 700;
+  color: var(--muted);
+  background: transparent; border: 0;
+  cursor: pointer;
+  padding: 0.5rem 0.875rem;
+  border-radius: var(--radius-pill);
+}
+.editor-bar .close:hover { background: var(--surface); color: var(--ink); }
+
+.editor-title { padding: 0.875rem 1.25rem 0.5rem; }
+.editor-title .h {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 60, "SOFT" 100, "wght" 500;
+  font-size: 1.5rem; letter-spacing: -0.018em;
+  line-height: 1.15;
+  text-wrap: balance;
+  margin-bottom: 0.5rem;
+  color: var(--ink);
+}
+.editor-title .s {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 18, "SOFT" 100, "wght" 400;
+  font-style: italic;
+  font-size: 0.9375rem; color: var(--muted);
+}
+
+.fields { padding: 1rem 1.25rem 1.5rem; }
+.field { margin-bottom: 1.25rem; }
+.field label {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-family: var(--sans);
+  font-size: 0.6875rem; font-weight: 800;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--accent-deep);
+  margin-bottom: 0.375rem;
+}
+.field label .num {
+  background: var(--accent-soft);
+  color: var(--accent-deep);
+  padding: 0.125rem 0.4375rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.625rem; font-weight: 800;
+  letter-spacing: 0;
+}
+.field .hint {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 16, "SOFT" 100, "wght" 400;
+  font-style: italic; font-size: 0.8125rem;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+  line-height: 1.45;
+}
+.field textarea, .field input {
+  width: 100%;
+  background: var(--surface);
+  border: 1.5px solid var(--border-soft);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 18, "SOFT" 100, "wght" 400;
+  font-size: 0.9375rem; line-height: 1.55;
+  padding: 0.875rem 1rem;
+  border-radius: var(--radius-md);
+  resize: none;
+  transition: all .18s ease;
+}
+.field textarea:focus, .field input:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: oklch(1 0 0);
+  box-shadow: 0 0 0 4px oklch(0.72 0.18 35 / 0.15);
+}
+
+.editor-footer {
+  padding: 0.875rem 1.25rem 1rem;
+  background: var(--surface);
+  border-top: 1px solid var(--border-soft);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: center;
+}
+.editor-footer .cooldown {
+  font-family: var(--sans);
+  font-size: 0.75rem; font-weight: 500;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.editor-footer .cooldown b { color: var(--ink); font-weight: 700; }
+.editor-footer .inscribe {
+  font-family: var(--sans);
+  font-size: 0.875rem; font-weight: 800;
+  padding: 0.6875rem 1.5rem;
+  background: var(--accent);
+  color: oklch(1 0 0);
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  box-shadow: 0 8px 20px oklch(0.7 0.18 35 / 0.35);
+  transition: all .18s ease;
+}
+.editor-footer .inscribe:hover {
+  background: var(--accent-deep);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px oklch(0.7 0.18 35 / 0.45);
+}
+
+/* ===== Desktop frame ===== */
+.desktop-frame {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  height: 800px;
+  background: var(--bg);
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: var(--shadow-frame);
+  display: grid;
+  grid-template-columns: 248px 1fr 320px;
+  grid-template-rows: 64px 1fr;
+  border: 1px solid var(--border-soft);
+}
+.desktop-bar {
+  grid-column: 1 / -1;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 1.75rem;
+  background: oklch(0.975 0.015 230);
+  border-bottom: 1px solid var(--border-soft);
+}
+.desktop-bar .brand {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 32, "SOFT" 100, "wght" 600;
+  font-size: 1.125rem; letter-spacing: -0.01em;
+  display: flex; align-items: center; gap: 0.625rem;
+}
+.desktop-bar .brand .mark {
+  width: 28px; height: 28px;
+  background: linear-gradient(135deg, var(--accent), var(--primary));
+  border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: oklch(1 0 0);
+  font-size: 0.875rem;
+  box-shadow: var(--shadow-soft);
+}
+.desktop-bar .clock {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-family: var(--sans); font-size: 0.8125rem; font-weight: 600;
+  color: var(--ink-soft);
+  background: var(--surface);
+  padding: 0.4375rem 0.875rem 0.4375rem 0.625rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-soft);
+  font-variant-numeric: tabular-nums;
+}
+.desktop-bar .clock .pulse {
+  width: 6px; height: 6px; background: var(--meadow); border-radius: 50%;
+  animation: pulse 3.4s ease-in-out infinite;
+}
+.desktop-bar .clock b { color: var(--ink); font-weight: 700; }
+.desktop-bar .who {
+  display: flex; align-items: center; gap: 0.625rem;
+}
+.desktop-bar .who .who-name {
+  font-family: var(--sans); font-size: 0.8125rem; font-weight: 600;
+  color: var(--ink);
+}
+
+.desktop-nav {
+  background: oklch(0.965 0.018 230);
+  border-right: 1px solid var(--border-soft);
+  padding: 1.5rem 1rem;
+}
+.desktop-nav .group {
+  font-family: var(--sans); font-size: 0.6875rem; font-weight: 800;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted-2);
+  margin: 1.25rem 0.625rem 0.5rem;
+}
+.desktop-nav .group:first-child { margin-top: 0; }
+.desktop-nav a {
+  display: flex; align-items: center; gap: 0.625rem;
+  padding: 0.625rem 0.75rem;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: var(--ink-soft);
+  font-family: var(--sans); font-size: 0.875rem; font-weight: 600;
+  margin-bottom: 0.125rem;
+  transition: all .18s ease;
+}
+.desktop-nav a:hover { background: var(--surface); color: var(--ink); }
+.desktop-nav a.active {
+  background: oklch(1 0 0);
+  color: var(--ink);
+  box-shadow: var(--shadow-soft);
+}
+.desktop-nav a .ic {
+  width: 16px; height: 16px;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+.desktop-nav a.active .ic { color: var(--accent); }
+
+.desktop-main {
+  padding: 2.5rem 3.5rem;
+  overflow-y: auto;
+}
+.desktop-main .where {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--sans); font-size: 0.75rem; font-weight: 800;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--accent-deep);
+  background: var(--accent-soft);
+  padding: 0.375rem 0.75rem;
+  border-radius: var(--radius-pill);
+  margin-bottom: 1.25rem;
+}
+.desktop-main h1 {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 120, "SOFT" 100, "wght" 500;
+  font-size: 2.5rem; line-height: 1.05;
+  letter-spacing: -0.025em; text-wrap: balance;
+  margin-bottom: 1.25rem;
+  max-width: 20ch;
+  color: var(--ink);
+}
+.desktop-main h1 em {
+  font-style: italic;
+  font-variation-settings: "opsz" 120, "SOFT" 100, "wght" 500;
+  color: var(--accent-deep);
+}
+.desktop-main .lede {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 24, "SOFT" 100, "wght" 400;
+  font-size: 1.125rem; line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 62ch;
+  margin-bottom: 2.25rem;
+}
+.desktop-main .lede em { color: var(--accent-deep); font-style: italic; }
+
+.desk-rule {
+  border: 0;
+  border-top: 1px dashed var(--border-soft);
+  margin: 2rem 0;
+}
+
+.desktop-main h2 {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 48, "SOFT" 100, "wght" 500;
+  font-size: 1.5rem; letter-spacing: -0.018em;
+  margin-bottom: 1.25rem;
+  color: var(--ink);
+}
+.feed-entry {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--border-soft);
+  margin-bottom: 1rem;
+}
+.feed-entry .av {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 36, "wght" 600;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.feed-entry .body {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 20, "SOFT" 100, "wght" 400;
+  font-size: 1rem; line-height: 1.6;
+  color: var(--ink-soft);
+  text-wrap: pretty;
+  max-width: 60ch;
+}
+.feed-entry .body .head {
+  display: flex; align-items: baseline; gap: 0.625rem;
+  margin-bottom: 0.375rem;
+}
+.feed-entry .body .head .when {
+  font-family: var(--sans);
+  font-size: 0.6875rem; font-weight: 700;
+  color: var(--muted); font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+.feed-entry .body .head .pill {
+  font-family: var(--sans);
+  font-size: 0.625rem; font-weight: 800;
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.05em; text-transform: uppercase;
+}
+.feed-entry .body .head .pill.agent {
+  background: var(--primary-soft); color: var(--primary-deep);
+}
+.feed-entry .body .head .pill.instinct {
+  background: var(--meadow-soft); color: oklch(0.32 0.10 150);
+}
+.feed-entry .body b {
+  color: var(--ink); font-weight: 600;
+  font-variation-settings: "opsz" 20, "SOFT" 100, "wght" 600;
+}
+.feed-entry .body em { color: var(--accent-deep); font-style: italic; }
+
+.desktop-rail {
+  background: oklch(0.965 0.018 230);
+  border-left: 1px solid var(--border-soft);
+  padding: 2rem 1.5rem;
+  overflow-y: auto;
+}
+.rail-card {
+  margin-bottom: 1rem;
+  padding: 1rem 1.125rem;
+  background: oklch(1 0 0);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--border-soft);
+}
+.rail-card .label {
+  font-family: var(--sans);
+  font-size: 0.6875rem; font-weight: 800;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 0.375rem;
+}
+.rail-card .v {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 28, "SOFT" 100, "wght" 600;
+  font-size: 1.3125rem;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+  line-height: 1.1;
+}
+.rail-card .v small {
+  font-family: var(--sans); font-size: 0.75rem; font-weight: 600;
+  color: var(--muted); margin-left: 0.25rem;
+}
+.rail-card .v.warn { color: var(--accent-deep); }
+.rail-card .v.calm { color: oklch(0.42 0.13 150); }
+.rail-card .desc {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 14, "SOFT" 100, "wght" 400;
+  font-size: 0.8125rem;
+  font-style: italic; color: var(--muted);
+  margin-top: 0.375rem; line-height: 1.45;
+}
+
+.rail-section-title {
+  font-family: var(--sans);
+  font-size: 0.6875rem; font-weight: 800;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted-2);
+  margin: 1.25rem 0.375rem 0.625rem;
+}
+
+.rail-list { display: flex; flex-direction: column; gap: 0.25rem; }
+.rail-item {
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  gap: 0.625rem;
+  align-items: center;
+  padding: 0.5rem 0.625rem;
+  border-radius: var(--radius-md);
+  font-family: var(--sans); font-size: 0.8125rem;
+  background: transparent;
+  transition: background .18s;
+}
+.rail-item:hover { background: var(--surface); }
+.rail-item .av {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-size: 0.6875rem; font-weight: 700;
+  font-variation-settings: "opsz" 20, "wght" 700;
+}
+.rail-item .who { color: var(--ink); font-weight: 700; font-size: 0.8125rem; }
+.rail-item .what {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 14, "SOFT" 100, "wght" 400;
+  font-style: italic; font-size: 0.75rem;
+  color: var(--muted);
+}
+
+/* ===== Tokens block ===== */
+.tokens-block {
+  margin-top: 5rem;
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem 3rem;
+  box-shadow: var(--shadow-card);
+}
+.tokens-block h3 {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 36, "SOFT" 100, "wght" 600;
+  font-size: 1.375rem; letter-spacing: -0.015em;
+  margin-bottom: 1.5rem;
+}
+.tokens-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem 1.25rem;
+}
+.swatch {
+  display: flex; align-items: center; gap: 0.875rem;
+  font-family: ui-monospace, 'JetBrains Mono', SFMono-Regular, monospace;
+  font-size: 0.6875rem;
+  color: var(--muted);
+}
+.swatch .chip {
+  width: 36px; height: 36px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-soft);
+  flex-shrink: 0;
+  box-shadow: var(--shadow-soft);
+}
+.swatch b {
+  font-family: var(--sans);
+  font-size: 0.8125rem; font-weight: 700;
+  color: var(--ink);
+  display: block; margin-bottom: 0.125rem;
+}
+
+/* ===== Realm Map (Open Map screen) ===== */
+.realm-top {
+  padding: 0.875rem 1rem;
+  display: flex; align-items: center; gap: 0.75rem;
+  background: transparent;
+}
+.realm-top .back {
+  width: 36px; height: 36px;
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink);
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+}
+.realm-top .title {
+  flex: 1;
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 28, "SOFT" 100, "wght" 600;
+  font-size: 1rem; letter-spacing: -0.01em;
+  color: var(--ink);
+  line-height: 1.1;
+}
+.realm-top .title small {
+  display: block;
+  font-family: var(--sans); font-size: 0.6875rem; font-weight: 700;
+  color: var(--muted); margin-top: 0.125rem;
+  letter-spacing: 0.05em; text-transform: uppercase;
+}
+.realm-top .layers {
+  width: 36px; height: 36px;
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink-soft);
+  box-shadow: var(--shadow-soft);
+}
+
+.realm-map-frame {
+  margin: 0 0.75rem 0.5rem;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, oklch(0.96 0.030 220) 0%, oklch(0.97 0.025 200) 40%, oklch(0.95 0.040 90) 100%);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-soft);
+}
+.realm-svg {
+  display: block; width: 100%; height: auto;
+}
+
+.realm-floating {
+  position: absolute;
+  pointer-events: none;
+}
+.realm-floating.kingdom-pill {
+  top: 12px; left: 12px;
+  background: oklch(1 0 0 / 0.92);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius-pill);
+  padding: 0.375rem 0.75rem 0.375rem 0.625rem;
+  display: flex; align-items: center; gap: 0.5rem;
+  font-family: var(--sans); font-size: 0.6875rem; font-weight: 700;
+  color: var(--ink); letter-spacing: 0.02em;
+  box-shadow: var(--shadow-soft);
+}
+.realm-floating.kingdom-pill .ico {
+  width: 14px; height: 14px;
+  border-radius: 4px;
+}
+
+.realm-zoom {
+  position: absolute;
+  right: 12px; top: 12px;
+  display: flex; flex-direction: column;
+  background: oklch(1 0 0 / 0.92);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
+.realm-zoom button {
+  width: 32px; height: 32px;
+  background: transparent;
+  border: none; cursor: pointer;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.125rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.realm-zoom button + button { border-top: 1px solid var(--border-soft); }
+.realm-zoom button:hover { background: var(--surface); }
+
+.realm-stats {
+  margin: 0.875rem 0.875rem 0;
+  padding: 1rem 1.125rem;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-card);
+}
+.realm-stats .h {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 30, "SOFT" 100, "wght" 600;
+  font-size: 1.0625rem;
+  color: var(--ink);
+  margin-bottom: 0.625rem;
+  letter-spacing: -0.008em;
+}
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 0.875rem;
+}
+.stat-cell {
+  padding: 0.625rem 0.5rem;
+  background: var(--bg);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+.stat-cell .n {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 32, "SOFT" 100, "wght" 700;
+  font-size: 1.25rem;
+  color: var(--ink); line-height: 1;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 0.25rem;
+}
+.stat-cell .n.accent { color: var(--accent-deep); }
+.stat-cell .n.meadow { color: oklch(0.42 0.13 150); }
+.stat-cell .n.primary { color: var(--primary-deep); }
+.stat-cell .l {
+  font-family: var(--sans);
+  font-size: 0.6875rem; font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.04em; text-transform: uppercase;
+}
+
+.kingdoms-list { display: flex; flex-direction: column; gap: 0.5rem; }
+.k-row {
+  display: grid;
+  grid-template-columns: 14px 1fr auto auto;
+  gap: 0.625rem;
+  align-items: center;
+  padding: 0.5rem 0.625rem;
+  background: var(--bg);
+  border-radius: var(--radius-md);
+}
+.k-row .swatch-k {
+  width: 12px; height: 12px;
+  border-radius: 4px;
+  border: 1.5px solid oklch(1 0 0);
+  box-shadow: 0 0 0 1px var(--border-soft);
+}
+.k-row .name {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 20, "SOFT" 100, "wght" 600;
+  font-size: 0.9375rem;
+  color: var(--ink);
+}
+.k-row .name small {
+  display: block;
+  font-family: var(--sans); font-size: 0.6875rem; font-weight: 600;
+  color: var(--muted); margin-top: 0.0625rem;
+  letter-spacing: 0;
+  font-variation-settings: normal;
+}
+.k-row .souls {
+  font-family: var(--sans); font-size: 0.75rem; font-weight: 700;
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+.k-row .badge-mini {
+  font-family: var(--sans); font-size: 0.625rem; font-weight: 800;
+  padding: 0.1875rem 0.5rem;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.04em; text-transform: uppercase;
+}
+.k-row .badge-mini.war { background: oklch(0.94 0.06 25); color: var(--danger); }
+.k-row .badge-mini.peace { background: var(--meadow-soft); color: oklch(0.32 0.10 150); }
+.k-row .badge-mini.frontier { background: var(--amber-soft); color: oklch(0.42 0.13 75); }
+
+/* ===== Desktop full-map layout ===== */
+.realm-desktop {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  height: 800px;
+  background: var(--bg);
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: var(--shadow-frame);
+  display: grid;
+  grid-template-columns: 248px 1fr 320px;
+  grid-template-rows: 64px 1fr;
+  border: 1px solid var(--border-soft);
+}
+.realm-desktop .desktop-main {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(ellipse at 30% 20%, oklch(0.97 0.045 35 / 0.4), transparent 50%),
+    radial-gradient(ellipse at 80% 80%, oklch(0.95 0.04 150 / 0.35), transparent 50%),
+    oklch(0.97 0.020 220);
+  position: relative;
+}
+.realm-desktop .map-toolbar {
+  padding: 1.25rem 2rem 0.875rem;
+  display: flex; align-items: center; gap: 0.625rem;
+  border-bottom: 1px solid var(--border-soft);
+}
+.realm-desktop .map-toolbar h1 {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 48, "SOFT" 100, "wght" 600;
+  font-size: 1.625rem; letter-spacing: -0.018em;
+  color: var(--ink);
+  margin-right: auto;
+}
+.realm-desktop .map-toolbar h1 small {
+  font-family: var(--sans); font-size: 0.75rem; font-weight: 700;
+  color: var(--muted); margin-left: 0.625rem;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  font-variation-settings: normal;
+}
+.realm-desktop .canvas {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+.realm-desktop .canvas .realm-svg {
+  width: 100%; height: 100%;
+}
+.realm-desktop .stat-bar {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1rem 2rem;
+  border-top: 1px solid var(--border-soft);
+  background: oklch(1 0 0 / 0.6);
+  backdrop-filter: blur(8px);
+}
+.realm-desktop .stat-bar .item {
+  display: flex; flex-direction: column;
+  gap: 0.125rem;
+}
+.realm-desktop .stat-bar .item .n {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 36, "SOFT" 100, "wght" 700;
+  font-size: 1.625rem;
+  color: var(--ink); line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.realm-desktop .stat-bar .item .n.accent { color: var(--accent-deep); }
+.realm-desktop .stat-bar .item .n.meadow { color: oklch(0.42 0.13 150); }
+.realm-desktop .stat-bar .item .n.primary { color: var(--primary-deep); }
+.realm-desktop .stat-bar .item .l {
+  font-family: var(--sans);
+  font-size: 0.6875rem; font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.05em; text-transform: uppercase;
+}
+.realm-desktop .stat-bar .vsep {
+  width: 1px; background: var(--border-soft);
+}
+
+.realm-desktop .desktop-rail .head-title {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 36, "SOFT" 100, "wght" 600;
+  font-size: 1.125rem; letter-spacing: -0.012em;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+
+.realm-desktop .k-row {
+  padding: 0.625rem 0.75rem;
+  background: oklch(1 0 0);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--border-soft);
+  margin-bottom: 0.5rem;
+}
+
+/* SVG inline styles - territory paths */
+.svg-terr { mix-blend-mode: multiply; }
+
+@media (max-width: 900px) {
+  body { padding: 2rem 1rem 4rem; }
+  .desktop-frame {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    height: auto;
+  }
+  .desktop-nav, .desktop-rail { display: none; }
+  .desktop-main { padding: 1.5rem; }
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <header>
+    <div class="eyebrow">Phase 0 · UI Mockup</div>
+    <h1>Shocky Topia — a small kingdom you visit, <em>not a console you operate.</em></h1>
+    <p>Bright, soft surfaces. Hand-feel typography. The chronicle keeps writing while you're away, and you come back to read it like a friend's notebook on the windowsill. Anti-references: AAA fantasy HUD, cream/parchment AI default, dark dev console.</p>
+  </header>
+
+  <h2>Mobile <small>360 × 760 · primary surface</small></h2>
+
+  <div class="mobile-grid">
+
+    <!-- ============ Screen 1: World ============ -->
+    <div class="frame-wrap">
+      <div class="frame-label"><span class="dot"></span>World — default tab</div>
+      <div class="mobile-frame">
+        <div class="topbar">
+          <div class="gametime-chip">
+            <span class="pulse"></span>
+            <b>Year 42</b><span class="sep">·</span>Winter<span class="sep">·</span>Day 14
+          </div>
+          <div class="avatar">K</div>
+        </div>
+        <div class="screen-content">
+
+          <div class="now-card">
+            <div class="where">Now in Shocky Topia</div>
+            <h1>Ironhold has <em>declared upon</em> the Ash Vale.</h1>
+            <p>Three messengers ride south. A long winter has hardened the council; six elder voices broke for war, two against.</p>
+            <footer>
+              <span>~18 min real-time ago</span>
+              <a href="#">Read in Chronicle →</a>
+            </footer>
+          </div>
+
+          <div class="section-head">
+            <h3>Your corner of the world</h3>
+            <a href="#">Open map</a>
+          </div>
+          <div class="map-card">
+            <div class="map-grid">
+              <script>
+                const layout = [
+                  '...wwww....pp.',
+                  '..wwwww...ppp.',
+                  '.dddwwddpppppd',
+                  '.dffddoddpyppd',
+                  '.dffffddpppppd',
+                  '..fffmmmmmmpd.',
+                  '...fmmmmmmmd..',
+                ].join('');
+                const map = {
+                  '.': 't',
+                  'd': 't discovered',
+                  'f': 't forest',
+                  'w': 't water',
+                  'p': 't plains',
+                  'm': 't mountain',
+                  'y': 't you',
+                  'o': 't other',
+                };
+                for (const c of layout) document.write('<div class="'+(map[c]||'t')+'"></div>');
+              </script>
+            </div>
+            <div class="map-legend">
+              <span><i style="background:var(--accent)"></i>You</span>
+              <span><i style="background:var(--primary)"></i>Others</span>
+              <span><i style="background:oklch(0.86 0.07 150)"></i>Forest</span>
+              <span><i style="background:oklch(0.88 0.07 230)"></i>Water</span>
+            </div>
+          </div>
+
+          <div class="section-head">
+            <h3>Today, in the realm</h3>
+            <a href="#">More</a>
+          </div>
+          <div class="activity-list">
+            <div class="activity-item">
+              <div class="ava m">ม</div>
+              <div>
+                <div class="body"><b>Mira</b> reached the <em>Ash Vale frontier</em>. The map opens westward.</div>
+                <div class="when">Day 14 · 04:22</div>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="ava b">B</div>
+              <div>
+                <div class="body">Council of <b>Ironhold</b> met. The vote, by lamp-light: six to two.</div>
+                <div class="when">Day 13 · 22:11</div>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="ava k">K</div>
+              <div>
+                <div class="body"><b>Kira</b> traded grain for steel with <b>Bren</b>. A debt remembered.</div>
+                <div class="when">Day 13 · 14:08</div>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="ava t">T</div>
+              <div>
+                <div class="body"><b>Tarn</b> fell into <em>Instinct</em>. The forest is generous; he will eat tonight.</div>
+                <div class="when">Day 13 · 06:31</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <nav class="botnav">
+          <a class="active" href="#">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l6-8 4 5 3-4 5 7"/><circle cx="12" cy="12" r="9"/></svg>
+            World
+          </a>
+          <a href="#">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.5 5.5L20 10l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-1.5z"/></svg>
+            Mine
+          </a>
+          <a href="#">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h12a2 2 0 0 1 2 2v14H7a2 2 0 0 1-2-2V4z"/><path d="M5 4v14a2 2 0 0 0 2 2"/><path d="M9 8h6M9 12h6"/></svg>
+            Chronicle
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- ============ Screen 2: Mine ============ -->
+    <div class="frame-wrap">
+      <div class="frame-label"><span class="dot"></span>Mine — your character</div>
+      <div class="mobile-frame">
+        <div class="topbar">
+          <div class="gametime-chip">
+            <span class="pulse"></span>
+            <b>Year 42</b><span class="sep">·</span>Winter
+          </div>
+          <div class="avatar">K</div>
+        </div>
+        <div class="screen-content">
+
+          <div class="char-hero">
+            <div class="row">
+              <div class="ava-big">K</div>
+              <div>
+                <h1>Kira of Three Rivers</h1>
+                <div class="sub">Human · 34 years</div>
+              </div>
+            </div>
+            <div class="badges">
+              <span class="badge"><i></i>Prime</span>
+              <span class="badge meadow"><i></i>Merchant</span>
+              <span class="badge amber"><i></i>2 friendships</span>
+            </div>
+          </div>
+
+          <div class="status-card">
+            <div class="s-cell">
+              <div class="l">Hunger</div>
+              <div class="v">Well-fed</div>
+              <div class="bar"><div class="fill meadow" style="width:78%"></div></div>
+            </div>
+            <div class="s-cell">
+              <div class="l">Stamina</div>
+              <div class="v">Tired</div>
+              <div class="bar"><div class="fill amber" style="width:38%"></div></div>
+            </div>
+            <div class="s-cell">
+              <div class="l">Health</div>
+              <div class="v">Whole</div>
+              <div class="bar"><div class="fill meadow" style="width:96%"></div></div>
+            </div>
+            <div class="s-cell">
+              <div class="l">Mood</div>
+              <div class="v">Unsettled</div>
+              <div class="bar"><div class="fill accent" style="width:52%"></div></div>
+            </div>
+          </div>
+
+          <div class="will-card">
+            <div class="label">Will · last inscribed Day 9</div>
+            <blockquote>"ฉันคือพ่อค้าที่จำทุกคำสัญญา ไม่เริ่มต้นความรุนแรง แต่หนี้คือหนี้ ฉันกลัวความจนมากกว่ากลัวตาย — และฉันจะไม่ลืม Bren"</blockquote>
+            <footer>
+              <span class="meta">Next revision in 4h 12m</span>
+              <button>Revise</button>
+            </footer>
+          </div>
+
+          <div class="section-head">
+            <h3>Recent decisions</h3>
+            <a href="#">Full log</a>
+          </div>
+          <div class="recent-actions">
+            <div class="action-row">
+              <div class="verb">
+                <b>Traded</b> 4 grain for 1 steel ingot · Bren
+                <span class="time">Day 14 · 04:22</span>
+              </div>
+              <div class="mode agent">Agent</div>
+            </div>
+            <div class="action-row">
+              <div class="verb">
+                <b>Moved</b> west · 3 tiles · 12 stamina
+                <span class="time">Day 14 · 02:11</span>
+              </div>
+              <div class="mode agent">Agent</div>
+            </div>
+            <div class="action-row">
+              <div class="verb">
+                <b>Rested</b> at the hearth · 6h sleep
+                <span class="time">Day 13 · 23:58</span>
+              </div>
+              <div class="mode instinct">Instinct</div>
+            </div>
+            <div class="action-row">
+              <div class="verb">
+                <b>Talked</b> with Bren · debt acknowledged
+                <span class="time">Day 13 · 18:40</span>
+              </div>
+              <div class="mode agent">Agent</div>
+            </div>
+          </div>
+
+          <div class="token-strip">
+            <div>
+              <div class="meter-label">Today's budget</div>
+              <div class="meter"><div class="fill" style="width:64%"></div></div>
+            </div>
+            <div class="cap">128k <small>/ 200k</small></div>
+          </div>
+
+        </div>
+        <nav class="botnav">
+          <a href="#">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l6-8 4 5 3-4 5 7"/><circle cx="12" cy="12" r="9"/></svg>
+            World
+          </a>
+          <a class="active" href="#">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.5 5.5L20 10l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-1.5z"/></svg>
+            Mine
+          </a>
+          <a href="#">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h12a2 2 0 0 1 2 2v14H7a2 2 0 0 1-2-2V4z"/><path d="M5 4v14a2 2 0 0 0 2 2"/><path d="M9 8h6M9 12h6"/></svg>
+            Chronicle
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- ============ Screen 3: Chronicle ============ -->
+    <div class="frame-wrap">
+      <div class="frame-label"><span class="dot"></span>Chronicle — the story feed</div>
+      <div class="mobile-frame">
+        <div class="topbar">
+          <div class="gametime-chip">
+            <span class="pulse"></span>
+            <b>Year 42</b><span class="sep">·</span>Winter
+          </div>
+          <div class="avatar">K</div>
+        </div>
+        <div class="screen-content">
+
+          <div class="chronicle-head">
+            <h1>The Chronicle</h1>
+            <div class="desc">A pen that never stops, even while you sleep.</div>
+          </div>
+
+          <div class="chips">
+            <div class="chip active">All</div>
+            <div class="chip">Kira's thread</div>
+            <div class="chip">Ironhold</div>
+            <div class="chip">Frontier</div>
+            <div class="chip">Deaths</div>
+          </div>
+
+          <div class="chronicle-feed">
+
+            <div class="epoch">Year 42 · Winter</div>
+
+            <div class="entry">
+              <div class="when">
+                <span class="av ava m">ม</span>
+                Day 14 · 04:22
+              </div>
+              <div class="body"><b>Mira of the Beast-touched</b> stepped past the last cairn and looked west. The map of Shocky Topia is now 41 tiles wider; this region, by the right of first arrival, is named the <em>Ash Vale</em>.</div>
+            </div>
+
+            <div class="entry">
+              <div class="when">
+                <span class="av ava b">B</span>
+                Day 13 · 22:11
+              </div>
+              <div class="body">The Council of <b>Ironhold</b> debated for three lamp-fillings. Six elder voices broke for war against the Vale; two stood against. Three messengers ride south at dawn.</div>
+            </div>
+
+            <div class="entry">
+              <div class="when">
+                <span class="av ava k">K</span>
+                Day 13 · 14:08
+              </div>
+              <div class="body"><b>Kira</b> and <b>Bren</b> traded grain for steel beneath the eastern oak. Both noted the bargain in their ledgers; one of them <em>quietly wrote it twice</em>.</div>
+            </div>
+
+            <div class="epoch">Year 42 · Autumn</div>
+
+            <div class="entry">
+              <div class="when">
+                <span class="av ava t">T</span>
+                Day 89 · 18:30
+              </div>
+              <div class="body">A long harvest closed. <b>Tarn</b> slept beneath the bough for four nights running and learned the patience of trees.</div>
+            </div>
+
+          </div>
+        </div>
+        <nav class="botnav">
+          <a href="#">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l6-8 4 5 3-4 5 7"/><circle cx="12" cy="12" r="9"/></svg>
+            World
+          </a>
+          <a href="#">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.5 5.5L20 10l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-1.5z"/></svg>
+            Mine
+          </a>
+          <a class="active" href="#">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h12a2 2 0 0 1 2 2v14H7a2 2 0 0 1-2-2V4z"/><path d="M5 4v14a2 2 0 0 0 2 2"/><path d="M9 8h6M9 12h6"/></svg>
+            Chronicle
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- ============ Screen 5: Open Map (Realm view) ============ -->
+    <div class="frame-wrap">
+      <div class="frame-label"><span class="dot"></span>Open Map — the whole realm</div>
+      <div class="mobile-frame">
+        <div class="realm-top">
+          <div class="back">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+          </div>
+          <div class="title">
+            The Realm of Shocky Topia
+            <small>Year 42, Winter · Day 14</small>
+          </div>
+          <div class="layers">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-5 9 5-9 5z"/><path d="M3 12l9 5 9-5"/><path d="M3 17l9 5 9-5"/></svg>
+          </div>
+        </div>
+
+        <div class="realm-map-frame">
+          <div class="realm-floating kingdom-pill">
+            <span class="ico" style="background:var(--primary)"></span>
+            Showing all kingdoms
+          </div>
+          <div class="realm-zoom">
+            <button>+</button>
+            <button>−</button>
+          </div>
+
+          <svg class="realm-svg" viewBox="0 0 360 480" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="sea" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="oklch(0.88 0.06 220)"/>
+                <stop offset="1" stop-color="oklch(0.82 0.08 230)"/>
+              </linearGradient>
+              <linearGradient id="land" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="oklch(0.94 0.04 90)"/>
+                <stop offset="1" stop-color="oklch(0.92 0.04 100)"/>
+              </linearGradient>
+              <pattern id="dots" x="0" y="0" width="14" height="14" patternUnits="userSpaceOnUse">
+                <circle cx="2" cy="2" r="0.6" fill="oklch(0.65 0.05 90)" opacity="0.4"/>
+              </pattern>
+              <pattern id="terr-iron" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
+                <rect width="10" height="10" fill="oklch(0.85 0.10 258 / 0.45)"/>
+                <circle cx="2" cy="2" r="0.7" fill="oklch(0.55 0.18 258 / 0.5)"/>
+              </pattern>
+            </defs>
+
+            <!-- Sea (left and bottom) -->
+            <path d="M0,0 L0,480 L80,480 L88,440 L72,400 L56,360 L40,320 L24,260 L18,200 L26,140 L40,80 L24,40 L0,0 Z" fill="url(#sea)"/>
+            <path d="M360,420 L360,480 L290,480 L300,450 L330,430 Z" fill="url(#sea)"/>
+
+            <!-- Land base -->
+            <path d="M0,0 L360,0 L360,420 L330,430 L300,450 L290,480 L80,480 L88,440 L72,400 L56,360 L40,320 L24,260 L18,200 L26,140 L40,80 L24,40 L0,0 Z" fill="url(#land)"/>
+            <path d="M0,0 L360,0 L360,420 L330,430 L300,450 L290,480 L80,480 L88,440 L72,400 L56,360 L40,320 L24,260 L18,200 L26,140 L40,80 L24,40 L0,0 Z" fill="url(#dots)"/>
+
+            <!-- Mountain range (north) -->
+            <path d="M40,30 L80,55 L110,28 L150,52 L185,30 L220,58 L255,28 L290,50 L320,32 L340,55 L340,80 L40,80 Z" fill="oklch(0.78 0.04 280)" opacity="0.7"/>
+            <path d="M50,40 L78,60 L72,68 Z M115,38 L142,60 L138,65 Z M188,38 L218,62 L214,68 Z M260,38 L286,58 L282,65 Z" fill="oklch(0.94 0.02 280)" opacity="0.85"/>
+
+            <!-- Forest patches -->
+            <ellipse cx="115" cy="195" rx="42" ry="28" fill="oklch(0.82 0.10 150)" opacity="0.55"/>
+            <ellipse cx="105" cy="205" rx="28" ry="18" fill="oklch(0.76 0.13 150)" opacity="0.45"/>
+            <ellipse cx="265" cy="245" rx="35" ry="22" fill="oklch(0.82 0.10 150)" opacity="0.55"/>
+            <ellipse cx="280" cy="240" rx="22" ry="14" fill="oklch(0.76 0.13 150)" opacity="0.45"/>
+            <ellipse cx="200" cy="395" rx="38" ry="24" fill="oklch(0.82 0.10 150)" opacity="0.5"/>
+
+            <!-- Rivers -->
+            <path d="M180,80 Q175,140 195,200 Q220,260 240,330 Q255,380 290,420" stroke="oklch(0.80 0.08 220)" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.85"/>
+            <path d="M65,200 Q90,230 130,250 Q170,260 195,260" stroke="oklch(0.80 0.08 220)" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.85"/>
+
+            <!-- Lake -->
+            <ellipse cx="220" cy="155" rx="20" ry="13" fill="oklch(0.86 0.07 225)" opacity="0.85"/>
+
+            <!-- ===== Kingdom territories (washes) ===== -->
+            <!-- Ironhold (north, cobalt) -->
+            <path d="M55,85 Q95,75 145,82 Q200,78 250,82 Q300,80 335,90 Q340,110 320,135 Q280,150 240,142 Q180,155 130,148 Q85,150 55,130 Z" fill="oklch(0.55 0.18 258 / 0.22)" stroke="oklch(0.45 0.16 258)" stroke-width="1" stroke-dasharray="3 3" opacity="0.9"/>
+
+            <!-- Three Rivers (Kira's home, SW, coral) -->
+            <path d="M55,250 Q80,242 110,250 Q145,260 170,275 Q165,310 145,335 Q115,350 85,340 Q55,325 50,295 Z" fill="oklch(0.72 0.18 35 / 0.22)" stroke="oklch(0.55 0.15 30)" stroke-width="1" stroke-dasharray="3 3" opacity="0.9"/>
+
+            <!-- Stonebeach (E coast, sage) -->
+            <path d="M260,200 Q310,195 340,210 Q345,260 335,300 Q310,320 275,310 Q255,280 250,240 Z" fill="oklch(0.58 0.14 150 / 0.22)" stroke="oklch(0.42 0.13 150)" stroke-width="1" stroke-dasharray="3 3" opacity="0.9"/>
+
+            <!-- Ash Vale (west frontier, amber) -->
+            <path d="M40,365 Q70,355 105,365 Q150,375 175,385 Q170,420 145,440 Q105,450 75,440 Q50,425 40,400 Z" fill="oklch(0.78 0.16 75 / 0.25)" stroke="oklch(0.55 0.15 75)" stroke-width="1" stroke-dasharray="3 3" opacity="0.9"/>
+
+            <!-- War front (jagged line between Ironhold & Ash Vale) -->
+            <path d="M80,260 L92,278 L78,290 L94,308 L82,322 L96,340 L84,358" stroke="oklch(0.60 0.18 25)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>
+            <text x="58" y="305" font-family="Fraunces, serif" font-size="8" font-style="italic" font-weight="500" fill="oklch(0.5 0.15 25)" letter-spacing="0.5">War Front</text>
+
+            <!-- Trade routes (dashed) -->
+            <path d="M125,295 Q175,260 220,250 Q260,240 295,245" stroke="oklch(0.55 0.05 90)" stroke-width="1.5" fill="none" stroke-dasharray="2 4" opacity="0.65"/>
+            <path d="M225,115 Q255,170 290,250" stroke="oklch(0.55 0.05 90)" stroke-width="1.5" fill="none" stroke-dasharray="2 4" opacity="0.65"/>
+
+            <!-- Frontier edge (Mira's reach, dashed boundary west) -->
+            <path d="M28,360 Q22,400 32,440" stroke="oklch(0.55 0.15 75)" stroke-width="2" fill="none" stroke-dasharray="5 4" opacity="0.7"/>
+            <text x="6" y="395" font-family="Fraunces, serif" font-size="7.5" font-style="italic" font-weight="500" fill="oklch(0.5 0.13 75)" letter-spacing="0.3" transform="rotate(-90 6 395)">Frontier · Day 14</text>
+
+            <!-- ===== Settlements ===== -->
+            <!-- Ironhold Capital (large, north-central) -->
+            <g transform="translate(195, 115)">
+              <circle cx="0" cy="0" r="12" fill="oklch(1 0 0)" stroke="oklch(0.45 0.16 258)" stroke-width="1.5"/>
+              <path d="M-5,-5 L-5,2 L-2,2 L-2,-3 L2,-3 L2,2 L5,2 L5,-5 L3,-5 L3,-7 L-3,-7 L-3,-5 Z" fill="oklch(0.45 0.16 258)"/>
+              <circle cx="0" cy="0" r="14" fill="none" stroke="oklch(0.55 0.18 258)" stroke-width="0.5" opacity="0.4"/>
+            </g>
+            <text x="195" y="145" font-family="Fraunces, serif" font-size="10" font-weight="600" font-variation-settings="'opsz' 16,'SOFT' 100" text-anchor="middle" fill="oklch(0.25 0.10 258)">Ironhold</text>
+
+            <!-- Frostgate (Ironhold town, NE) -->
+            <g transform="translate(290, 120)">
+              <circle cx="0" cy="0" r="7" fill="oklch(1 0 0)" stroke="oklch(0.45 0.16 258)" stroke-width="1.2"/>
+              <circle cx="0" cy="0" r="3" fill="oklch(0.55 0.18 258)"/>
+            </g>
+            <text x="290" y="140" font-family="Fraunces, serif" font-size="8" font-style="italic" text-anchor="middle" fill="oklch(0.35 0.10 258)">Frostgate</text>
+
+            <!-- Three Rivers Town (Kira's home) -->
+            <g transform="translate(105, 295)">
+              <circle cx="0" cy="0" r="9" fill="oklch(1 0 0)" stroke="oklch(0.55 0.15 30)" stroke-width="1.5"/>
+              <path d="M-4,-3 L-4,3 L4,3 L4,-3 L0,-6 Z" fill="oklch(0.55 0.15 30)"/>
+            </g>
+            <text x="105" y="322" font-family="Fraunces, serif" font-size="9.5" font-weight="600" font-variation-settings="'opsz' 14,'SOFT' 100" text-anchor="middle" fill="oklch(0.30 0.12 30)">Three Rivers</text>
+
+            <!-- Stonebeach Port -->
+            <g transform="translate(305, 250)">
+              <circle cx="0" cy="0" r="9" fill="oklch(1 0 0)" stroke="oklch(0.42 0.13 150)" stroke-width="1.5"/>
+              <path d="M-4,0 L0,-5 L4,0 L4,4 L-4,4 Z" fill="oklch(0.42 0.13 150)"/>
+            </g>
+            <text x="305" y="277" font-family="Fraunces, serif" font-size="9.5" font-weight="600" font-variation-settings="'opsz' 14,'SOFT' 100" text-anchor="middle" fill="oklch(0.25 0.10 150)">Stonebeach</text>
+
+            <!-- Mira's Outpost (frontier camp) -->
+            <g transform="translate(75, 405)">
+              <circle cx="0" cy="0" r="6" fill="oklch(1 0 0)" stroke="oklch(0.55 0.15 75)" stroke-width="1.3" stroke-dasharray="2 1.5"/>
+              <circle cx="0" cy="0" r="2" fill="oklch(0.55 0.15 75)"/>
+            </g>
+            <text x="75" y="425" font-family="Fraunces, serif" font-size="8" font-style="italic" text-anchor="middle" fill="oklch(0.40 0.13 75)">Mira's Outpost</text>
+
+            <!-- Various villages -->
+            <g transform="translate(230, 180)">
+              <circle cx="0" cy="0" r="5" fill="oklch(1 0 0)" stroke="oklch(0.45 0.16 258)" stroke-width="1"/>
+              <circle cx="0" cy="0" r="2" fill="oklch(0.55 0.18 258)"/>
+            </g>
+            <g transform="translate(160, 280)">
+              <circle cx="0" cy="0" r="5" fill="oklch(1 0 0)" stroke="oklch(0.55 0.15 30)" stroke-width="1"/>
+              <circle cx="0" cy="0" r="2" fill="oklch(0.55 0.15 30)"/>
+            </g>
+            <g transform="translate(275, 295)">
+              <circle cx="0" cy="0" r="5" fill="oklch(1 0 0)" stroke="oklch(0.42 0.13 150)" stroke-width="1"/>
+              <circle cx="0" cy="0" r="2" fill="oklch(0.42 0.13 150)"/>
+            </g>
+            <g transform="translate(125, 380)">
+              <circle cx="0" cy="0" r="4.5" fill="oklch(1 0 0)" stroke="oklch(0.55 0.15 75)" stroke-width="1"/>
+              <circle cx="0" cy="0" r="1.8" fill="oklch(0.55 0.15 75)"/>
+            </g>
+
+            <!-- Region labels -->
+            <text x="195" y="100" font-family="Fraunces, serif" font-size="11" font-style="italic" font-weight="500" font-variation-settings="'opsz' 18,'SOFT' 100" text-anchor="middle" fill="oklch(0.30 0.12 258)" letter-spacing="1.5">KINGDOM OF IRON</text>
+            <text x="295" y="248" font-family="Fraunces, serif" font-size="10" font-style="italic" font-weight="500" font-variation-settings="'opsz' 16,'SOFT' 100" text-anchor="middle" fill="oklch(0.30 0.12 150)" letter-spacing="1.3">STONEBEACH</text>
+            <text x="105" y="265" font-family="Fraunces, serif" font-size="10" font-style="italic" font-weight="500" font-variation-settings="'opsz' 16,'SOFT' 100" text-anchor="middle" fill="oklch(0.30 0.13 30)" letter-spacing="1.3">THREE RIVERS</text>
+            <text x="100" y="383" font-family="Fraunces, serif" font-size="10" font-style="italic" font-weight="500" font-variation-settings="'opsz' 16,'SOFT' 100" text-anchor="middle" fill="oklch(0.40 0.13 75)" letter-spacing="1.3">ASH VALE</text>
+
+            <!-- ===== Character dots (many) ===== -->
+            <!-- Ironhold subjects (cobalt) -->
+            <g fill="oklch(0.55 0.18 258)">
+              <circle cx="170" cy="108" r="1.8"/><circle cx="180" cy="118" r="1.8"/>
+              <circle cx="208" cy="105" r="1.8"/><circle cx="215" cy="120" r="1.8"/>
+              <circle cx="225" cy="128" r="1.8"/><circle cx="250" cy="118" r="1.8"/>
+              <circle cx="265" cy="125" r="1.8"/><circle cx="278" cy="115" r="1.8"/>
+              <circle cx="155" cy="125" r="1.8"/><circle cx="138" cy="118" r="1.8"/>
+              <circle cx="118" cy="130" r="1.8"/><circle cx="240" cy="170" r="1.8"/>
+              <circle cx="252" cy="195" r="1.8"/>
+            </g>
+            <!-- Three Rivers subjects (coral) -->
+            <g fill="oklch(0.65 0.16 30)">
+              <circle cx="92" cy="288" r="1.8"/><circle cx="115" cy="285" r="1.8"/>
+              <circle cx="120" cy="305" r="1.8"/><circle cx="135" cy="295" r="1.8"/>
+              <circle cx="90" cy="312" r="1.8"/><circle cx="150" cy="278" r="1.8"/>
+              <circle cx="155" cy="298" r="1.8"/><circle cx="78" cy="278" r="1.8"/>
+            </g>
+            <!-- Stonebeach subjects (sage) -->
+            <g fill="oklch(0.50 0.13 150)">
+              <circle cx="292" cy="245" r="1.8"/><circle cx="312" cy="248" r="1.8"/>
+              <circle cx="298" cy="265" r="1.8"/><circle cx="318" cy="270" r="1.8"/>
+              <circle cx="285" cy="285" r="1.8"/><circle cx="270" cy="270" r="1.8"/>
+              <circle cx="305" cy="295" r="1.8"/>
+            </g>
+            <!-- Ash Vale settlers (amber) -->
+            <g fill="oklch(0.62 0.16 75)">
+              <circle cx="78" cy="400" r="1.8"/><circle cx="92" cy="408" r="1.8"/>
+              <circle cx="105" cy="395" r="1.8"/><circle cx="125" cy="402" r="1.8"/>
+              <circle cx="140" cy="420" r="1.8"/>
+            </g>
+            <!-- Wilderness / Instinct mode (muted) -->
+            <g fill="oklch(0.60 0.04 250)">
+              <circle cx="200" cy="240" r="1.5" opacity="0.6"/>
+              <circle cx="175" cy="380" r="1.5" opacity="0.6"/>
+              <circle cx="225" cy="350" r="1.5" opacity="0.6"/>
+            </g>
+
+            <!-- ===== You (Kira) — highlighted ===== -->
+            <g transform="translate(118, 300)">
+              <circle cx="0" cy="0" r="9" fill="oklch(0.72 0.18 35 / 0.25)">
+                <animate attributeName="r" values="9;13;9" dur="3.4s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values="0.6;0.1;0.6" dur="3.4s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="0" cy="0" r="4.5" fill="oklch(1 0 0)"/>
+              <circle cx="0" cy="0" r="3" fill="oklch(0.65 0.18 30)"/>
+            </g>
+            <text x="118" y="280" font-family="Nunito, sans-serif" font-size="8" font-weight="800" text-anchor="middle" fill="oklch(0.40 0.15 30)" letter-spacing="0.5">YOU · KIRA</text>
+          </svg>
+        </div>
+
+        <div class="realm-stats">
+          <div class="h">Shocky Topia, today</div>
+          <div class="stats-row">
+            <div class="stat-cell"><div class="n primary">127</div><div class="l">Souls</div></div>
+            <div class="stat-cell"><div class="n accent">4</div><div class="l">Kingdoms</div></div>
+            <div class="stat-cell"><div class="n meadow">42</div><div class="l">Years</div></div>
+          </div>
+          <div class="kingdoms-list">
+            <div class="k-row">
+              <span class="swatch-k" style="background:var(--primary)"></span>
+              <span class="name">Ironhold <small>· capital realm of the north</small></span>
+              <span class="souls">52</span>
+              <span class="badge-mini war">At war</span>
+            </div>
+            <div class="k-row">
+              <span class="swatch-k" style="background:var(--accent)"></span>
+              <span class="name">Three Rivers <small>· merchant lowland</small></span>
+              <span class="souls">31</span>
+              <span class="badge-mini peace">Peace</span>
+            </div>
+            <div class="k-row">
+              <span class="swatch-k" style="background:var(--meadow)"></span>
+              <span class="name">Stonebeach <small>· eastern port</small></span>
+              <span class="souls">24</span>
+              <span class="badge-mini peace">Peace</span>
+            </div>
+            <div class="k-row">
+              <span class="swatch-k" style="background:var(--amber)"></span>
+              <span class="name">Ash Vale <small>· Mira's claim, Day 14</small></span>
+              <span class="souls">8</span>
+              <span class="badge-mini frontier">Frontier</span>
+            </div>
+          </div>
+        </div>
+
+        <nav class="botnav" style="margin-top:0.875rem">
+          <a class="active" href="#">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l6-8 4 5 3-4 5 7"/><circle cx="12" cy="12" r="9"/></svg>
+            World
+          </a>
+          <a href="#">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.5 5.5L20 10l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-1.5z"/></svg>
+            Mine
+          </a>
+          <a href="#">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h12a2 2 0 0 1 2 2v14H7a2 2 0 0 1-2-2V4z"/><path d="M5 4v14a2 2 0 0 0 2 2"/><path d="M9 8h6M9 12h6"/></svg>
+            Chronicle
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- ============ Screen 4: Will Editor ============ -->
+    <div class="frame-wrap">
+      <div class="frame-label"><span class="dot"></span>Will Editor — full-screen</div>
+      <div class="mobile-frame editor-frame">
+        <div class="editor-bar">
+          <div class="left">
+            <span class="pen">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3l4 4-11 11H6v-4z"/></svg>
+            </span>
+            Revise your will
+          </div>
+          <button class="close">Discard</button>
+        </div>
+        <div class="screen-content">
+          <div class="editor-title">
+            <div class="h">Write who you are. The Agent will decide what to do.</div>
+            <div class="s">Not commands. A self that holds under pressure.</div>
+          </div>
+          <div class="fields">
+
+            <div class="field">
+              <label><span class="num">1</span>Identity</label>
+              <div class="hint">Who is this character, in one sentence? What would a stranger remember?</div>
+              <textarea rows="3">พ่อค้าหญิงจาก Three Rivers ผู้จำทุกคำสัญญา รักสันติแต่ไม่ลืมหนี้</textarea>
+            </div>
+
+            <div class="field">
+              <label><span class="num">2</span>Goal</label>
+              <div class="hint">What pulls them forward across years, not weeks?</div>
+              <textarea rows="2">สร้างเครือข่ายการค้าที่กว้างที่สุดในแถบนี้ ภายใน 5 ปีเกม</textarea>
+            </div>
+
+            <div class="field">
+              <label><span class="num">3</span>Values</label>
+              <div class="hint">Two or three rules that hold even when convenient to break.</div>
+              <textarea rows="3">— ไม่เริ่มต้นความรุนแรง แต่ตอบโต้เสมอ
+— ขายเมื่อกำไรอย่างน้อย 20%
+— ทุกคำสัญญาเขียนลง และจดจำ</textarea>
+            </div>
+
+            <div class="field">
+              <label><span class="num">4</span>Fears</label>
+              <div class="hint">What do they avoid at any cost?</div>
+              <textarea rows="2">กลัวความจนมากกว่ากลัวตาย</textarea>
+            </div>
+
+            <div class="field">
+              <label><span class="num">5</span>Budget hint</label>
+              <div class="hint">When tokens run thin, what should they default to?</div>
+              <input type="text" value="ประหยัด token หากไม่มีเหตุการณ์เร่งด่วน">
+            </div>
+
+          </div>
+        </div>
+        <div class="editor-footer">
+          <div class="cooldown">
+            Next revision opens in <b>24h</b><br>
+            Survival profile will regenerate.
+          </div>
+          <button class="inscribe">Inscribe</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ============ Desktop layout ============ -->
+  <h2>Desktop <small>1280 × 800 · same kindness, more breath</small></h2>
+
+  <div class="desktop-frame">
+    <header class="desktop-bar">
+      <div class="brand">
+        <span class="mark">S</span>
+        Shocky Topia
+      </div>
+      <div class="clock">
+        <span class="pulse"></span>
+        <b>Year 42</b> · Winter · Day 14 · next tick 00:42
+      </div>
+      <div class="who">
+        <div class="avatar" style="width:32px;height:32px;font-size:0.875rem">K</div>
+        <span class="who-name">Kira of Three Rivers</span>
+      </div>
+    </header>
+
+    <aside class="desktop-nav">
+      <div class="group">The Realm</div>
+      <a href="#">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l6-8 4 5 3-4 5 7"/><circle cx="12" cy="12" r="9"/></svg>
+        World
+      </a>
+      <a href="#">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h12a2 2 0 0 1 2 2v14H7a2 2 0 0 1-2-2V4z"/><path d="M5 4v14a2 2 0 0 0 2 2"/><path d="M9 8h6M9 12h6"/></svg>
+        Chronicle
+      </a>
+      <a href="#">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="9"/></svg>
+        Frontier
+      </a>
+      <div class="group">Your Soul</div>
+      <a class="active" href="#">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.5 5.5L20 10l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-1.5z"/></svg>
+        Mine
+      </a>
+      <a href="#">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3l4 4-11 11H6v-4z"/></svg>
+        Revise the Will
+      </a>
+      <a href="#">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+        Memory
+      </a>
+      <div class="group">Vessel</div>
+      <a href="#">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11.5 12.5L21 3M15 7l3 3M13 9l3 3"/></svg>
+        Key & Budget
+      </a>
+    </aside>
+
+    <main class="desktop-main">
+      <div class="where">Your Soul · this turn</div>
+      <h1>Kira walked west, and <em>Bren remembered her name.</em></h1>
+      <div class="lede">A short day. The grain traded clean, the bargain entered in two ledgers. By dusk Kira had moved three tiles toward the Vale; the stamina is thin, but the <em>will</em> holds.</div>
+
+      <hr class="desk-rule">
+
+      <h2>Today's decisions</h2>
+
+      <div class="feed-entry">
+        <div class="av ava k">K</div>
+        <div class="body">
+          <div class="head"><span class="when">Day 14 · 04:22</span><span class="pill agent">Agent</span></div>
+          <b>Traded</b> four sacks of winter grain for one ingot of Ironhold steel. The exchange went unrecorded by Bren — Kira <em>recorded it twice</em>.
+        </div>
+      </div>
+      <div class="feed-entry">
+        <div class="av ava k">K</div>
+        <div class="body">
+          <div class="head"><span class="when">Day 14 · 02:11</span><span class="pill agent">Agent</span></div>
+          <b>Moved</b> west along the trade road for three tiles. The Agent noted: <em>"the Vale opens; debt is patient."</em>
+        </div>
+      </div>
+      <div class="feed-entry">
+        <div class="av ava k">K</div>
+        <div class="body">
+          <div class="head"><span class="when">Day 13 · 23:58</span><span class="pill instinct">Instinct</span></div>
+          <b>Rested</b> at a hearth in the forest village. No strategy decided — only the body keeping itself.
+        </div>
+      </div>
+    </main>
+
+    <aside class="desktop-rail">
+      <div class="rail-card">
+        <div class="label">Hunger</div>
+        <div class="v calm">Well-fed</div>
+        <div class="desc">Three days of supply at the current burn rate.</div>
+      </div>
+      <div class="rail-card">
+        <div class="label">Stamina</div>
+        <div class="v warn">Tired</div>
+        <div class="desc">Will recover on a full night's rest.</div>
+      </div>
+      <div class="rail-card">
+        <div class="label">Mood</div>
+        <div class="v warn">Unsettled</div>
+        <div class="desc">A debt remembered, a road open.</div>
+      </div>
+
+      <div class="rail-card">
+        <div class="label">Today's budget</div>
+        <div class="v">128k <small>/ 200k</small></div>
+      </div>
+
+      <div class="rail-section-title">Within sight</div>
+      <div class="rail-list">
+        <div class="rail-item">
+          <div class="av ava b">B</div>
+          <span class="who">Bren</span>
+          <span class="what">trusted</span>
+        </div>
+        <div class="rail-item">
+          <div class="av ava s">H</div>
+          <span class="who">Hask</span>
+          <span class="what">indebted</span>
+        </div>
+        <div class="rail-item">
+          <div class="av ava t">T</div>
+          <span class="who">Tarn</span>
+          <span class="what">in instinct</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <h2>Desktop — The Realm <small>1280 × 800 · the world at a glance</small></h2>
+
+  <div class="realm-desktop">
+    <header class="desktop-bar">
+      <div class="brand">
+        <span class="mark">S</span>
+        Shocky Topia
+      </div>
+      <div class="clock">
+        <span class="pulse"></span>
+        <b>Year 42</b> · Winter · Day 14 · next tick 00:42
+      </div>
+      <div class="who">
+        <div class="avatar" style="width:32px;height:32px;font-size:0.875rem">K</div>
+        <span class="who-name">Kira of Three Rivers</span>
+      </div>
+    </header>
+
+    <aside class="desktop-nav">
+      <div class="group">The Realm</div>
+      <a class="active" href="#">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l6-8 4 5 3-4 5 7"/><circle cx="12" cy="12" r="9"/></svg>
+        World
+      </a>
+      <a href="#">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h12a2 2 0 0 1 2 2v14H7a2 2 0 0 1-2-2V4z"/><path d="M5 4v14a2 2 0 0 0 2 2"/><path d="M9 8h6M9 12h6"/></svg>
+        Chronicle
+      </a>
+      <a href="#">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="9"/></svg>
+        Frontier
+      </a>
+      <div class="group">Your Soul</div>
+      <a href="#">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.5 5.5L20 10l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-1.5z"/></svg>
+        Mine
+      </a>
+      <a href="#">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3l4 4-11 11H6v-4z"/></svg>
+        Revise the Will
+      </a>
+      <a href="#">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+        Memory
+      </a>
+      <div class="group">Vessel</div>
+      <a href="#">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11.5 12.5L21 3M15 7l3 3M13 9l3 3"/></svg>
+        Key & Budget
+      </a>
+    </aside>
+
+    <main class="desktop-main">
+      <div class="map-toolbar">
+        <h1>The Realm of Shocky Topia <small>· 4 Kingdoms · 127 Souls · 42 Years</small></h1>
+        <div class="chip active" style="background:var(--ink);color:oklch(1 0 0);border-color:var(--ink)">Kingdoms</div>
+        <div class="chip">Trade routes</div>
+        <div class="chip">War fronts</div>
+        <div class="chip">Frontier</div>
+      </div>
+
+      <div class="canvas">
+        <svg class="realm-svg" viewBox="0 0 960 540" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="seaD" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="oklch(0.88 0.06 220)"/>
+              <stop offset="1" stop-color="oklch(0.82 0.08 230)"/>
+            </linearGradient>
+            <linearGradient id="landD" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="oklch(0.95 0.035 90)"/>
+              <stop offset="1" stop-color="oklch(0.92 0.045 100)"/>
+            </linearGradient>
+            <pattern id="dotsD" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
+              <circle cx="2" cy="2" r="0.7" fill="oklch(0.65 0.05 90)" opacity="0.4"/>
+            </pattern>
+          </defs>
+
+          <!-- Sea base -->
+          <rect width="960" height="540" fill="url(#seaD)"/>
+
+          <!-- Continent shape -->
+          <path d="M55,30 L920,30 L935,80 L920,140 L940,200 L920,270 L940,340 L905,400 L880,460 L840,500 L740,510 L600,505 L460,510 L310,505 L180,510 L100,490 L70,440 L50,380 L70,310 L40,240 L60,170 L40,100 Z" fill="url(#landD)"/>
+          <path d="M55,30 L920,30 L935,80 L920,140 L940,200 L920,270 L940,340 L905,400 L880,460 L840,500 L740,510 L600,505 L460,510 L310,505 L180,510 L100,490 L70,440 L50,380 L70,310 L40,240 L60,170 L40,100 Z" fill="url(#dotsD)"/>
+
+          <!-- Mountain range across north -->
+          <path d="M70,40 L130,75 L180,40 L240,82 L300,42 L370,80 L430,38 L500,80 L570,40 L640,78 L710,42 L780,80 L840,40 L900,75 L900,110 L70,110 Z" fill="oklch(0.78 0.04 280)" opacity="0.7"/>
+          <g fill="oklch(0.94 0.02 280)" opacity="0.85">
+            <path d="M85,55 L125,85 L118,95 Z"/><path d="M188,55 L235,90 L228,98 Z"/>
+            <path d="M308,55 L368,88 L360,98 Z"/><path d="M438,52 L498,90 L488,100 Z"/>
+            <path d="M578,55 L640,88 L632,98 Z"/><path d="M718,55 L780,90 L772,98 Z"/>
+            <path d="M848,55 L900,85 L892,95 Z"/>
+          </g>
+
+          <!-- Forests scattered -->
+          <ellipse cx="220" cy="230" rx="60" ry="38" fill="oklch(0.82 0.10 150)" opacity="0.5"/>
+          <ellipse cx="210" cy="240" rx="40" ry="24" fill="oklch(0.76 0.13 150)" opacity="0.45"/>
+          <ellipse cx="540" cy="270" rx="58" ry="38" fill="oklch(0.82 0.10 150)" opacity="0.5"/>
+          <ellipse cx="555" cy="265" rx="36" ry="22" fill="oklch(0.76 0.13 150)" opacity="0.45"/>
+          <ellipse cx="780" cy="320" rx="64" ry="40" fill="oklch(0.82 0.10 150)" opacity="0.55"/>
+          <ellipse cx="790" cy="325" rx="42" ry="26" fill="oklch(0.76 0.13 150)" opacity="0.5"/>
+          <ellipse cx="350" cy="430" rx="68" ry="38" fill="oklch(0.82 0.10 150)" opacity="0.55"/>
+
+          <!-- Rivers -->
+          <path d="M380,110 Q360,200 405,290 Q445,370 475,440 Q510,490 580,510" stroke="oklch(0.80 0.08 220)" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.85"/>
+          <path d="M620,110 Q635,180 690,240 Q745,290 800,350" stroke="oklch(0.80 0.08 220)" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.8"/>
+          <path d="M85,250 Q145,265 220,275 Q300,290 380,290" stroke="oklch(0.80 0.08 220)" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.8"/>
+
+          <!-- Lake -->
+          <ellipse cx="495" cy="200" rx="34" ry="22" fill="oklch(0.86 0.07 225)" opacity="0.88"/>
+          <ellipse cx="495" cy="200" rx="36" ry="24" fill="none" stroke="oklch(0.65 0.10 220)" stroke-width="1" opacity="0.5"/>
+
+          <!-- ===== Kingdom territories ===== -->
+          <!-- Ironhold (north center, cobalt) -->
+          <path d="M280,118 Q380,108 480,112 Q580,108 680,118 Q720,150 700,200 Q650,235 590,225 Q510,250 430,235 Q360,250 290,225 Q260,200 270,160 Z" fill="oklch(0.55 0.18 258 / 0.20)" stroke="oklch(0.45 0.16 258)" stroke-width="1.2" stroke-dasharray="4 3" opacity="0.9"/>
+
+          <!-- Three Rivers (SW, coral) -->
+          <path d="M110,330 Q190,318 270,335 Q325,360 345,400 Q335,440 295,460 Q220,475 160,460 Q105,440 90,395 Z" fill="oklch(0.72 0.18 35 / 0.20)" stroke="oklch(0.55 0.15 30)" stroke-width="1.2" stroke-dasharray="4 3" opacity="0.9"/>
+
+          <!-- Stonebeach (east coast, sage) -->
+          <path d="M740,260 Q830,250 900,265 Q920,330 910,400 Q870,435 800,425 Q740,395 720,330 Z" fill="oklch(0.58 0.14 150 / 0.20)" stroke="oklch(0.42 0.13 150)" stroke-width="1.2" stroke-dasharray="4 3" opacity="0.9"/>
+
+          <!-- Ash Vale (west frontier, amber) -->
+          <path d="M70,355 Q130,348 180,355 Q145,395 130,440 Q100,460 75,450 Q55,420 60,380 Z" fill="oklch(0.78 0.16 75 / 0.25)" stroke="oklch(0.55 0.15 75)" stroke-width="1.2" stroke-dasharray="4 3" opacity="0.9"/>
+
+          <!-- War front (jagged Ironhold ↔ Ash Vale) -->
+          <path d="M200,300 L218,316 L196,332 L222,346 L200,360 L226,374 L204,388" stroke="oklch(0.60 0.18 25)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>
+          <text x="155" y="350" font-family="Fraunces, serif" font-size="11" font-style="italic" font-weight="500" fill="oklch(0.5 0.15 25)" letter-spacing="1">War Front</text>
+
+          <!-- Trade routes -->
+          <path d="M260,400 Q400,360 530,340 Q680,330 820,330" stroke="oklch(0.5 0.05 90)" stroke-width="2" fill="none" stroke-dasharray="3 5" opacity="0.6"/>
+          <path d="M460,170 Q540,220 700,290" stroke="oklch(0.5 0.05 90)" stroke-width="2" fill="none" stroke-dasharray="3 5" opacity="0.6"/>
+          <path d="M260,400 Q200,330 200,210" stroke="oklch(0.5 0.05 90)" stroke-width="2" fill="none" stroke-dasharray="3 5" opacity="0.5"/>
+
+          <!-- Frontier edge -->
+          <path d="M55,335 Q35,400 50,470" stroke="oklch(0.55 0.15 75)" stroke-width="2.5" fill="none" stroke-dasharray="6 4" opacity="0.75"/>
+          <text x="22" y="400" font-family="Fraunces, serif" font-size="10" font-style="italic" font-weight="500" fill="oklch(0.5 0.13 75)" letter-spacing="0.5" transform="rotate(-90 22 400)">Frontier · Day 14</text>
+
+          <!-- Region labels -->
+          <text x="490" y="100" font-family="Fraunces, serif" font-size="16" font-style="italic" font-weight="500" font-variation-settings="'opsz' 24,'SOFT' 100" text-anchor="middle" fill="oklch(0.30 0.12 258)" letter-spacing="2.5">KINGDOM OF IRON</text>
+          <text x="220" y="395" font-family="Fraunces, serif" font-size="14" font-style="italic" font-weight="500" font-variation-settings="'opsz' 20,'SOFT' 100" text-anchor="middle" fill="oklch(0.30 0.13 30)" letter-spacing="2">THREE RIVERS</text>
+          <text x="810" y="320" font-family="Fraunces, serif" font-size="14" font-style="italic" font-weight="500" font-variation-settings="'opsz' 20,'SOFT' 100" text-anchor="middle" fill="oklch(0.30 0.12 150)" letter-spacing="2">STONEBEACH</text>
+          <text x="120" y="430" font-family="Fraunces, serif" font-size="13" font-style="italic" font-weight="500" font-variation-settings="'opsz' 18,'SOFT' 100" text-anchor="middle" fill="oklch(0.42 0.13 75)" letter-spacing="1.5">ASH VALE</text>
+
+          <!-- ===== Settlements ===== -->
+          <!-- Ironhold Capital -->
+          <g transform="translate(490, 170)">
+            <circle cx="0" cy="0" r="22" fill="oklch(0.55 0.18 258 / 0.10)"/>
+            <circle cx="0" cy="0" r="16" fill="oklch(1 0 0)" stroke="oklch(0.45 0.16 258)" stroke-width="2"/>
+            <path d="M-8,-6 L-8,4 L-3,4 L-3,-4 L3,-4 L3,4 L8,4 L8,-6 L5,-6 L5,-9 L-5,-9 L-5,-6 Z" fill="oklch(0.45 0.16 258)"/>
+          </g>
+          <text x="490" y="208" font-family="Fraunces, serif" font-size="13" font-weight="600" font-variation-settings="'opsz' 20,'SOFT' 100" text-anchor="middle" fill="oklch(0.22 0.10 258)">Ironhold</text>
+
+          <!-- Frostgate -->
+          <g transform="translate(650, 180)">
+            <circle cx="0" cy="0" r="11" fill="oklch(1 0 0)" stroke="oklch(0.45 0.16 258)" stroke-width="1.5"/>
+            <circle cx="0" cy="0" r="5" fill="oklch(0.55 0.18 258)"/>
+          </g>
+          <text x="650" y="205" font-family="Fraunces, serif" font-size="11" font-style="italic" text-anchor="middle" fill="oklch(0.32 0.10 258)">Frostgate</text>
+
+          <!-- Holdmoor -->
+          <g transform="translate(360, 175)">
+            <circle cx="0" cy="0" r="11" fill="oklch(1 0 0)" stroke="oklch(0.45 0.16 258)" stroke-width="1.5"/>
+            <circle cx="0" cy="0" r="5" fill="oklch(0.55 0.18 258)"/>
+          </g>
+          <text x="360" y="200" font-family="Fraunces, serif" font-size="11" font-style="italic" text-anchor="middle" fill="oklch(0.32 0.10 258)">Holdmoor</text>
+
+          <!-- Three Rivers Town -->
+          <g transform="translate(220, 395)">
+            <circle cx="0" cy="0" r="14" fill="oklch(1 0 0)" stroke="oklch(0.55 0.15 30)" stroke-width="2"/>
+            <path d="M-6,-4 L-6,4 L6,4 L6,-4 L0,-9 Z" fill="oklch(0.55 0.15 30)"/>
+          </g>
+          <text x="220" y="425" font-family="Fraunces, serif" font-size="12" font-weight="600" font-variation-settings="'opsz' 18,'SOFT' 100" text-anchor="middle" fill="oklch(0.28 0.13 30)">Three Rivers</text>
+
+          <!-- Stonebeach Port -->
+          <g transform="translate(810, 335)">
+            <circle cx="0" cy="0" r="14" fill="oklch(1 0 0)" stroke="oklch(0.42 0.13 150)" stroke-width="2"/>
+            <path d="M-6,0 L0,-7 L6,0 L6,5 L-6,5 Z" fill="oklch(0.42 0.13 150)"/>
+          </g>
+          <text x="810" y="365" font-family="Fraunces, serif" font-size="12" font-weight="600" font-variation-settings="'opsz' 18,'SOFT' 100" text-anchor="middle" fill="oklch(0.25 0.10 150)">Stonebeach</text>
+
+          <!-- Mira's Outpost -->
+          <g transform="translate(110, 405)">
+            <circle cx="0" cy="0" r="9" fill="oklch(1 0 0)" stroke="oklch(0.55 0.15 75)" stroke-width="1.8" stroke-dasharray="3 2"/>
+            <circle cx="0" cy="0" r="3" fill="oklch(0.55 0.15 75)"/>
+          </g>
+          <text x="110" y="430" font-family="Fraunces, serif" font-size="11" font-style="italic" text-anchor="middle" fill="oklch(0.40 0.13 75)">Mira's Outpost</text>
+
+          <!-- Villages -->
+          <g transform="translate(380, 230)">
+            <circle cx="0" cy="0" r="8" fill="oklch(1 0 0)" stroke="oklch(0.45 0.16 258)" stroke-width="1.2"/>
+            <circle cx="0" cy="0" r="3" fill="oklch(0.55 0.18 258)"/>
+          </g>
+          <g transform="translate(580, 215)">
+            <circle cx="0" cy="0" r="8" fill="oklch(1 0 0)" stroke="oklch(0.45 0.16 258)" stroke-width="1.2"/>
+            <circle cx="0" cy="0" r="3" fill="oklch(0.55 0.18 258)"/>
+          </g>
+          <g transform="translate(310, 380)">
+            <circle cx="0" cy="0" r="8" fill="oklch(1 0 0)" stroke="oklch(0.55 0.15 30)" stroke-width="1.2"/>
+            <circle cx="0" cy="0" r="3" fill="oklch(0.55 0.15 30)"/>
+          </g>
+          <g transform="translate(740, 400)">
+            <circle cx="0" cy="0" r="8" fill="oklch(1 0 0)" stroke="oklch(0.42 0.13 150)" stroke-width="1.2"/>
+            <circle cx="0" cy="0" r="3" fill="oklch(0.42 0.13 150)"/>
+          </g>
+          <g transform="translate(165, 440)">
+            <circle cx="0" cy="0" r="7" fill="oklch(1 0 0)" stroke="oklch(0.55 0.15 75)" stroke-width="1.2"/>
+            <circle cx="0" cy="0" r="3" fill="oklch(0.55 0.15 75)"/>
+          </g>
+
+          <!-- ===== Character dots ===== -->
+          <!-- Ironhold subjects -->
+          <g fill="oklch(0.55 0.18 258)">
+            <circle cx="430" cy="155" r="2.5"/><circle cx="450" cy="170" r="2.5"/><circle cx="465" cy="185" r="2.5"/>
+            <circle cx="510" cy="155" r="2.5"/><circle cx="525" cy="175" r="2.5"/><circle cx="545" cy="185" r="2.5"/>
+            <circle cx="570" cy="160" r="2.5"/><circle cx="595" cy="175" r="2.5"/><circle cx="610" cy="190" r="2.5"/>
+            <circle cx="395" cy="180" r="2.5"/><circle cx="375" cy="195" r="2.5"/><circle cx="340" cy="190" r="2.5"/>
+            <circle cx="675" cy="180" r="2.5"/><circle cx="695" cy="195" r="2.5"/>
+            <circle cx="425" cy="215" r="2.5"/><circle cx="560" cy="220" r="2.5"/><circle cx="600" cy="235" r="2.5"/>
+            <circle cx="640" cy="220" r="2.5"/>
+          </g>
+          <!-- Three Rivers -->
+          <g fill="oklch(0.65 0.16 30)">
+            <circle cx="180" cy="385" r="2.5"/><circle cx="200" cy="380" r="2.5"/><circle cx="240" cy="378" r="2.5"/>
+            <circle cx="195" cy="410" r="2.5"/><circle cx="220" cy="420" r="2.5"/><circle cx="252" cy="408" r="2.5"/>
+            <circle cx="275" cy="395" r="2.5"/><circle cx="160" cy="420" r="2.5"/><circle cx="290" cy="440" r="2.5"/>
+            <circle cx="245" cy="445" r="2.5"/><circle cx="312" cy="425" r="2.5"/>
+          </g>
+          <!-- Stonebeach -->
+          <g fill="oklch(0.50 0.13 150)">
+            <circle cx="775" cy="320" r="2.5"/><circle cx="830" cy="330" r="2.5"/>
+            <circle cx="790" cy="355" r="2.5"/><circle cx="845" cy="365" r="2.5"/>
+            <circle cx="800" cy="385" r="2.5"/><circle cx="860" cy="395" r="2.5"/>
+            <circle cx="815" cy="415" r="2.5"/><circle cx="760" cy="395" r="2.5"/>
+            <circle cx="830" cy="290" r="2.5"/>
+          </g>
+          <!-- Ash Vale -->
+          <g fill="oklch(0.62 0.16 75)">
+            <circle cx="115" cy="395" r="2.5"/><circle cx="135" cy="402" r="2.5"/>
+            <circle cx="155" cy="412" r="2.5"/><circle cx="100" cy="420" r="2.5"/>
+            <circle cx="130" cy="430" r="2.5"/>
+          </g>
+          <!-- Wilderness / Instinct -->
+          <g fill="oklch(0.60 0.04 250)" opacity="0.6">
+            <circle cx="430" cy="320" r="2"/><circle cx="540" cy="340" r="2"/>
+            <circle cx="380" cy="280" r="2"/><circle cx="650" cy="380" r="2"/>
+            <circle cx="700" cy="450" r="2"/>
+          </g>
+
+          <!-- ===== You (Kira) ===== -->
+          <g transform="translate(255, 405)">
+            <circle cx="0" cy="0" r="14" fill="oklch(0.72 0.18 35 / 0.30)">
+              <animate attributeName="r" values="14;20;14" dur="3.4s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.6;0.1;0.6" dur="3.4s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="0" cy="0" r="7" fill="oklch(1 0 0)"/>
+            <circle cx="0" cy="0" r="5" fill="oklch(0.65 0.18 30)"/>
+          </g>
+          <text x="255" y="378" font-family="Nunito, sans-serif" font-size="11" font-weight="800" text-anchor="middle" fill="oklch(0.38 0.15 30)" letter-spacing="0.5">YOU · KIRA</text>
+        </svg>
+      </div>
+
+      <div class="stat-bar">
+        <div class="item">
+          <div class="n primary">127</div>
+          <div class="l">Souls living now</div>
+        </div>
+        <div class="vsep"></div>
+        <div class="item">
+          <div class="n accent">4</div>
+          <div class="l">Kingdoms</div>
+        </div>
+        <div class="vsep"></div>
+        <div class="item">
+          <div class="n meadow">42</div>
+          <div class="l">Years of history</div>
+        </div>
+        <div class="vsep"></div>
+        <div class="item">
+          <div class="n">2,134</div>
+          <div class="l">Tiles discovered</div>
+        </div>
+        <div class="vsep"></div>
+        <div class="item">
+          <div class="n">+41</div>
+          <div class="l">This week's frontier</div>
+        </div>
+      </div>
+    </main>
+
+    <aside class="desktop-rail">
+      <div class="head-title">Four kingdoms today</div>
+
+      <div class="k-row">
+        <span class="swatch-k" style="background:var(--primary)"></span>
+        <span class="name">Ironhold <small>· capital of the north</small></span>
+        <span class="souls">52</span>
+        <span class="badge-mini war">War</span>
+      </div>
+      <div class="k-row">
+        <span class="swatch-k" style="background:var(--accent)"></span>
+        <span class="name">Three Rivers <small>· merchant lowland</small></span>
+        <span class="souls">31</span>
+        <span class="badge-mini peace">Peace</span>
+      </div>
+      <div class="k-row">
+        <span class="swatch-k" style="background:var(--meadow)"></span>
+        <span class="name">Stonebeach <small>· eastern port</small></span>
+        <span class="souls">24</span>
+        <span class="badge-mini peace">Peace</span>
+      </div>
+      <div class="k-row">
+        <span class="swatch-k" style="background:var(--amber)"></span>
+        <span class="name">Ash Vale <small>· Mira's claim, Day 14</small></span>
+        <span class="souls">8</span>
+        <span class="badge-mini frontier">Frontier</span>
+      </div>
+
+      <div class="rail-section-title">This week in the realm</div>
+
+      <div class="rail-card">
+        <div class="label">War declared</div>
+        <div class="v warn" style="font-size:1.0625rem">Ironhold → Ash Vale</div>
+        <div class="desc">Six elder voices for, two against. Three messengers ride south.</div>
+      </div>
+      <div class="rail-card">
+        <div class="label">New land claimed</div>
+        <div class="v calm" style="font-size:1.0625rem">Mira's Outpost</div>
+        <div class="desc">First arrival on the western frontier. The map opens by 41 tiles.</div>
+      </div>
+      <div class="rail-card">
+        <div class="label">Trade volume</div>
+        <div class="v" style="font-size:1.0625rem">↑ 18% <small>vs last week</small></div>
+        <div class="desc">Steel out of Ironhold; grain from Three Rivers; salt from Stonebeach.</div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Tokens -->
+  <div class="tokens-block">
+    <h3>The palette underneath</h3>
+    <div class="tokens-grid">
+      <div class="swatch"><span class="chip" style="background:var(--bg)"></span><span><b>bg · pale sky</b>oklch(0.985 0.012 230)</span></div>
+      <div class="swatch"><span class="chip" style="background:var(--surface)"></span><span><b>surface · pillow</b>oklch(0.97 0.015 230)</span></div>
+      <div class="swatch"><span class="chip" style="background:var(--ink)"></span><span><b>ink · deep cobalt</b>oklch(0.22 0.030 258)</span></div>
+      <div class="swatch"><span class="chip" style="background:var(--muted)"></span><span><b>muted</b>oklch(0.50 0.022 258)</span></div>
+      <div class="swatch"><span class="chip" style="background:var(--primary)"></span><span><b>primary · cobalt</b>oklch(0.55 0.180 258)</span></div>
+      <div class="swatch"><span class="chip" style="background:var(--accent)"></span><span><b>accent · coral</b>oklch(0.72 0.180 35)</span></div>
+      <div class="swatch"><span class="chip" style="background:var(--meadow)"></span><span><b>meadow · sage</b>oklch(0.58 0.140 150)</span></div>
+      <div class="swatch"><span class="chip" style="background:var(--amber)"></span><span><b>amber · sunshine</b>oklch(0.78 0.160 75)</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

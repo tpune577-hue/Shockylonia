@@ -17,7 +17,7 @@ Accepted
 Chronicle เขียนในรูป "Year X, Summer: ..." — ใน 1 เดือนจริงโลกจะมีประวัติศาสตร์ ~36 ปีเกม
 
 ### Aging — The Blessing
-ทุก Character ที่อาศัยอยู่ใน Shockylonia ได้รับ **The Blessing** — พรที่ทำให้ผู้คนในแผ่นดินนี้มีอายุยืนยาว Character จึงไม่ตายตามอายุขัย แต่ร่างกายเปลี่ยนแปลงตาม **Age Phase**:
+ทุก Character ที่อาศัยอยู่ใน Shocky Topia ได้รับ **The Blessing** — พรที่ทำให้ผู้คนในแผ่นดินนี้มีอายุยืนยาว Character จึงไม่ตายตามอายุขัย แต่ร่างกายเปลี่ยนแปลงตาม **Age Phase**:
 
 | Phase | ช่วงอายุ (% ของ lifespan ดั้งเดิมของ Race) | ผลกลไก |
 |---|---|---|
