@@ -1,0 +1,81 @@
+# CONTEXT.md — Shockylonia Domain Glossary
+
+> Canonical terms ของ project นี้ ใช้คำเหล่านี้ให้ตรงกันทั้ง code, doc, และ UI
+> ห้าม couple กับ implementation detail — ใส่เฉพาะสิ่งที่ domain expert เข้าใจได้
+
+---
+
+## Player
+มนุษย์ที่นั่งหน้าจอ เป็นเจ้าของ **Character** และเป็นผู้เขียน **Will** + ผูก **AI Key** ตัวเอง
+Player ไม่ได้สั่ง action ทีละ step — Player ออกแบบเจตจำนง แล้วปล่อยให้ Agent ตัดสินใจ
+
+## Character
+ตัวละครหนึ่งตัวในโลก Shockylonia มี **Race**, **Stats**, **Survival** state และ **Memory** ของตัวเอง
+หนึ่ง Player เริ่มที่หนึ่ง Character (จำนวนต่อ Player ในอนาคต = open question)
+
+## Will (เจตจำนง)
+เอกสารที่ Player เขียนเพื่อนิยาม "ตัวตน" ของ Character — identity, goal, values, fears
+เป็น **คำบรรยายตัวตน ไม่ใช่ชุดคำสั่ง** — Agent ตีความเอาเองตามสถานการณ์
+แก้ได้แต่มี cooldown เพื่อรักษา identity และกัน micro-control
+
+## Agent
+"สมอง" ของ Character — โมเดล AI ที่ Player นำมาเชื่อม (ผ่าน BYOK) ทำหน้าที่อ่าน world state + Will + Memory แล้วตัดสินใจออกมาเป็น **Action**
+Agent ของแต่ละ Player เป็นคนละโมเดล/คนละงบกันได้
+
+## BYOK (Bring Your Own Key)
+หลักการที่ Player ต้องนำ **AI Key** ของตัวเองมาใช้ — เจ้าของเกมไม่แจก token ให้
+ต้นทุน AI ทั้งหมดอยู่กับ Player และกลายเป็น game mechanic (จ่ายมาก = สมองฉลาด/ตัดสินใจถี่กว่า)
+
+## AI Key
+credential (api key + endpoint + model) ที่ Player ผูกไว้กับ Character เพื่อให้ Agent เรียกใช้
+ตำแหน่งจัดเก็บ key เป็นการตัดสินใจสำคัญ — ดู ADR-0001
+
+## Token Budget
+เพดานการใช้ token ที่ Player กำหนดเอง (เช่น cap ต่อวัน + ความถี่การตัดสินใจ + ความลึกของ context)
+หมดงบ → Character เข้า **Instinct Mode**
+
+## Instinct Mode
+สถานะที่ Character รันด้วย **rule-based fallback** แทน Agent เมื่อ token หมด / API ล่ม
+Character ไม่ตาย แต่ทำเฉพาะ routine พื้นฐาน (กิน-นอน-ทำงานเดิม-หนีเมื่อถูกตี) — ดู ADR-0004
+
+## Action
+ผลลัพธ์การตัดสินใจของ Agent ในหนึ่ง Decision Tick เลือกจาก **enum ที่กำหนดไว้เท่านั้น** (ไม่ใช่ freeform) — ดู ADR-0003
+ตัวอย่าง action พื้นฐาน: Move / Gather / Eat / Rest / Craft / Trade / Talk / Attack / Build / Claim
+
+## World Tick
+รอบอัปเดตโลกแบบ rule engine ล้วน (hunger ลด, stamina ฟื้น, พืชโต, unit ขยับ) — **ไม่เรียก AI** — ดู ADR-0002
+
+## Decision Tick
+รอบที่ระบบเรียก **Agent** ของ Character ให้ตัดสินใจ ความถี่ขึ้นกับ Token Budget ของ Player
+trigger ได้ทั้งแบบ "ถึงรอบ" หรือ "มี event สำคัญ" (ถูกโจมตี / มีคนมาคุยด้วย)
+
+## Survival
+ชั้นความอยู่รอดของ Character วัดเป็นค่าชัดเจน: **Stamina, Hunger, HP, Mood**
+ห่วงโซ่: Hunger ต่ำ → Stamina regen ช้า → HP ลด → ตายได้จริง
+
+## Stats
+ค่าความสามารถที่ **พัฒนาและถดถอยตามการใช้งานจริง** (ใช้บ่อย=ขึ้น, ไม่ใช้นาน=decay)
+แกนหลัก: STR / AGI / INT / CHA / VIT + Skills (Farming, Mining, Combat, Trading, Crafting, Magic, Diplomacy)
+
+## Race
+เผ่าพันธุ์ของ Character — ต่างกันที่ **Passive bonus** ไม่ใช่แค่ skin
+Human (เรียนรู้เร็ว) / Elf (มานาสูง อิ่มนาน) / Dwarf (คราฟต์-ขุดเก่ง) / Beastkin (stamina regen ไว)
+
+## Settlement
+หน่วยการรวมกลุ่มของ Character บนแผนที่ ไล่ระดับ: **Camp → Village → Town → Kingdom**
+ระดับสูงขึ้นปลดล็อกตลาด, กฎหมาย, กองทัพ, การทูต
+
+## Kingdom
+Settlement ระดับสูงสุด มีผู้ปกครอง เก็บภาษี ออกกฎ ทำสงคราม/การทูตกับ Kingdom อื่นได้
+สงครามระดับ Kingdom ต้อง **declare ล่วงหน้า**
+
+## Infamy
+ค่าชื่อเสียงด้านลบที่เกิดจากการก่อความรุนแรง (เช่น ฆ่าใน safe zone)
+Infamy สูง → NPC guard ไล่ล่า, เมืองไม่ต้อนรับ — กลไกสร้าง friction ให้ PvP
+
+## Wallboard
+ชั้น spectator สาธารณะ — แผนที่โลกสด, leaderboards, และ **Chronicle**
+เป็นทั้งหน้าจอติดตามเกมและช่องทาง viral
+
+## Chronicle
+พงศาวดารอัตโนมัติ — ระบบเขียนเหตุการณ์สำคัญของโลกเป็นเรื่องเล่า ("วันที่ 47: ราชอาณาจักรเหล็กประกาศสงคราม...")
