@@ -1658,6 +1658,683 @@ body {
   display: flex; align-items: center; gap: 0.875rem;
 }
 
+/* ===== Improved Mood / Feeling card (replaces status-grid in Mine) ===== */
+.feeling-card {
+  margin: 0 0.875rem;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-card);
+  padding: 1rem 1.125rem 0.875rem;
+}
+.feeling-card .row {
+  display: flex; align-items: center; gap: 0.75rem;
+  margin-bottom: 0.625rem;
+}
+.feeling-card .ring {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  position: relative;
+  background: conic-gradient(
+    var(--meadow) 0% 25%,
+    var(--amber) 25% 50%,
+    var(--meadow) 50% 75%,
+    var(--accent) 75% 100%
+  );
+  padding: 3px;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-soft);
+}
+.feeling-card .ring .inner {
+  background: oklch(1 0 0);
+  border-radius: 50%;
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 28, "SOFT" 100, "wght" 600;
+  font-size: 1rem;
+  color: var(--accent-deep);
+}
+.feeling-card .kicker {
+  font-family: var(--sans);
+  font-size: 0.6875rem; font-weight: 800;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.125rem;
+}
+.feeling-card .mood-word {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 24, "SOFT" 100, "wght" 500;
+  font-size: 1.125rem; letter-spacing: -0.012em;
+  color: var(--ink); line-height: 1.15;
+}
+.feeling-card .voice {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 16, "SOFT" 100, "wght" 400;
+  font-style: italic; font-size: 0.875rem;
+  color: var(--ink-soft); line-height: 1.5;
+  padding: 0.5rem 0.75rem 0.625rem;
+  background: var(--bg);
+  border-radius: var(--radius-md);
+  border-left: 2px solid var(--accent);
+  margin-bottom: 0.75rem;
+}
+.feeling-card .pills {
+  display: flex; flex-wrap: wrap; gap: 0.375rem;
+}
+.feeling-card .pill {
+  display: inline-flex; align-items: center; gap: 0.375rem;
+  font-family: var(--sans);
+  font-size: 0.6875rem; font-weight: 700;
+  padding: 0.3125rem 0.625rem 0.3125rem 0.4375rem;
+  background: var(--bg);
+  border-radius: var(--radius-pill);
+  color: var(--ink-soft);
+  border: 1px solid var(--border-soft);
+}
+.feeling-card .pill .d {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.feeling-card .pill .d.meadow { background: var(--meadow); }
+.feeling-card .pill .d.amber { background: var(--amber); }
+.feeling-card .pill .d.accent { background: var(--accent); }
+.feeling-card .pill .d.danger { background: var(--danger); }
+.feeling-card .pill b { color: var(--ink); font-weight: 700; }
+
+/* ===== Onboarding / Welcome screens ===== */
+.onboard-frame {
+  background: linear-gradient(180deg,
+    oklch(0.985 0.025 35) 0%,
+    oklch(0.97 0.020 220) 50%,
+    oklch(0.94 0.030 150) 100%
+  );
+}
+.onboard-skip {
+  padding: 1rem 1.25rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.onboard-skip .step {
+  font-family: var(--sans);
+  font-size: 0.6875rem; font-weight: 800;
+  color: var(--muted);
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+.onboard-skip .skip {
+  font-family: var(--sans);
+  font-size: 0.75rem; font-weight: 700;
+  color: var(--muted);
+  background: transparent; border: 0; cursor: pointer;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-pill);
+}
+.onboard-skip .skip:hover { color: var(--ink); background: var(--surface); }
+
+.onboard-stepper {
+  display: flex; gap: 4px;
+  padding: 0 1.25rem 0.5rem;
+}
+.onboard-stepper .seg {
+  flex: 1; height: 3px;
+  background: var(--surface-3);
+  border-radius: 2px;
+}
+.onboard-stepper .seg.done { background: var(--accent); }
+.onboard-stepper .seg.now { background: var(--accent); }
+
+.onboard-art {
+  padding: 1.5rem 1.5rem 0.5rem;
+  display: flex; justify-content: center;
+}
+
+.onboard-body {
+  padding: 1rem 1.5rem 1rem;
+}
+.onboard-body .h {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 96, "SOFT" 100, "wght" 500;
+  font-size: 2rem; line-height: 1.05;
+  letter-spacing: -0.024em;
+  color: var(--ink);
+  margin-bottom: 0.625rem;
+  text-wrap: balance;
+}
+.onboard-body .h em {
+  font-style: italic;
+  font-variation-settings: "opsz" 96, "SOFT" 100, "wght" 500;
+  color: var(--accent-deep);
+}
+.onboard-body .sub {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 20, "SOFT" 100, "wght" 400;
+  font-size: 1rem; line-height: 1.55;
+  color: var(--ink-soft);
+  text-wrap: pretty;
+}
+
+.onboard-options {
+  padding: 1rem 1.25rem 0;
+  display: flex; flex-direction: column; gap: 0.625rem;
+}
+.opt-card {
+  display: flex; align-items: center; gap: 0.875rem;
+  padding: 0.875rem 1rem;
+  background: var(--surface);
+  border: 2px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all .2s ease;
+}
+.opt-card.selected {
+  border-color: var(--accent);
+  background: linear-gradient(160deg, oklch(0.97 0.045 35), oklch(0.97 0.020 30));
+  box-shadow: var(--shadow-card);
+}
+.opt-card .icon {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--bg);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 32, "wght" 600;
+  font-size: 1.0625rem;
+  color: var(--accent-deep);
+  flex-shrink: 0;
+}
+.opt-card.selected .icon { background: var(--accent); color: oklch(1 0 0); }
+.opt-card .text {
+  font-family: var(--sans);
+  font-size: 0.9375rem; font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.opt-card .text small {
+  display: block;
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 14, "SOFT" 100, "wght" 400;
+  font-style: italic; font-weight: 400;
+  font-size: 0.8125rem; color: var(--muted);
+  margin-top: 0.1875rem;
+}
+.opt-card .check {
+  margin-left: auto;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: oklch(1 0 0);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0;
+}
+.opt-card.selected .check { opacity: 1; }
+
+.onboard-footer {
+  margin-top: auto;
+  padding: 1.25rem 1.25rem 1.5rem;
+}
+.onboard-cta {
+  width: 100%;
+  font-family: var(--sans);
+  font-size: 0.9375rem; font-weight: 800;
+  padding: 0.875rem 1.25rem;
+  background: var(--accent);
+  color: oklch(1 0 0);
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  box-shadow: 0 10px 24px oklch(0.7 0.18 35 / 0.35);
+  transition: all .18s ease;
+}
+.onboard-cta:hover {
+  background: var(--accent-deep);
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px oklch(0.7 0.18 35 / 0.45);
+}
+.onboard-cta:disabled { background: var(--surface-3); color: var(--muted); box-shadow: none; cursor: not-allowed; }
+.onboard-secondary {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  font-family: var(--sans);
+  font-size: 0.8125rem; font-weight: 700;
+  color: var(--muted);
+  text-decoration: none;
+  background: transparent; border: 0; cursor: pointer;
+}
+.onboard-secondary:hover { color: var(--ink); }
+
+/* Name/will input for onboarding */
+.onb-input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  background: var(--surface);
+  border: 1.5px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 24, "SOFT" 100, "wght" 500;
+  font-size: 1.125rem;
+  color: var(--ink);
+  transition: all .18s ease;
+}
+.onb-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: oklch(1 0 0);
+  box-shadow: 0 0 0 4px oklch(0.72 0.18 35 / 0.15);
+}
+.onb-textarea {
+  width: 100%;
+  padding: 1rem;
+  background: var(--surface);
+  border: 1.5px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 20, "SOFT" 100, "wght" 400;
+  font-size: 0.9375rem; line-height: 1.55;
+  color: var(--ink);
+  resize: none;
+}
+.onb-textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: oklch(1 0 0);
+  box-shadow: 0 0 0 4px oklch(0.72 0.18 35 / 0.15);
+}
+.onb-field-label {
+  font-family: var(--sans);
+  font-size: 0.6875rem; font-weight: 800;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--accent-deep);
+  margin-bottom: 0.5rem;
+}
+.onb-hint {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 14, "SOFT" 100, "wght" 400;
+  font-style: italic; font-size: 0.8125rem;
+  color: var(--muted);
+  margin-top: 0.5rem;
+  line-height: 1.45;
+}
+
+/* Big language picker (onboarding) */
+.lang-picker {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0.625rem;
+}
+.lang-picker .opt-card { flex-direction: column; align-items: flex-start; gap: 0.5rem; padding: 1rem; }
+.lang-picker .lang-name {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 36, "SOFT" 100, "wght" 600;
+  font-size: 1.5rem;
+  color: var(--ink); line-height: 1;
+}
+.lang-picker .lang-sub {
+  font-family: var(--sans);
+  font-size: 0.75rem; font-weight: 600;
+  color: var(--muted);
+}
+
+/* ===== BYOK Setup form ===== */
+.byok-frame { background: var(--bg); }
+.byok-head {
+  padding: 1.25rem 1.5rem 0.5rem;
+}
+.byok-head .h {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 60, "SOFT" 100, "wght" 500;
+  font-size: 1.5rem; letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+.byok-head .s {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 18, "SOFT" 100, "wght" 400;
+  font-style: italic; font-size: 0.9375rem;
+  color: var(--muted); line-height: 1.5;
+}
+
+.byok-section {
+  padding: 0.875rem 1.25rem 0.25rem;
+}
+.byok-section .label-row {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+.byok-section .label-row .l {
+  font-family: var(--sans);
+  font-size: 0.6875rem; font-weight: 800;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--accent-deep);
+}
+.byok-section .label-row .hint-link {
+  font-family: var(--sans);
+  font-size: 0.75rem; font-weight: 700;
+  color: var(--primary); text-decoration: none;
+}
+
+.providers {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.5rem;
+}
+.provider-card {
+  padding: 0.625rem 0.5rem;
+  background: var(--surface);
+  border: 2px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  text-align: center;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+.provider-card.selected {
+  border-color: var(--accent);
+  background: oklch(1 0 0);
+  box-shadow: var(--shadow-soft);
+}
+.provider-card .glyph {
+  width: 28px; height: 28px;
+  margin: 0 auto 0.25rem;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 20, "wght" 600;
+  font-size: 0.875rem;
+  color: oklch(1 0 0);
+}
+.provider-card .glyph.anth { background: oklch(0.55 0.13 25); }
+.provider-card .glyph.goog { background: oklch(0.62 0.15 220); }
+.provider-card .glyph.open { background: oklch(0.55 0.12 145); }
+.provider-card .name {
+  font-family: var(--sans);
+  font-size: 0.6875rem; font-weight: 700;
+  color: var(--ink);
+}
+
+.more-providers {
+  display: block; width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.625rem;
+  text-align: center;
+  font-family: var(--sans);
+  font-size: 0.75rem; font-weight: 700;
+  color: var(--primary);
+  background: transparent;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+}
+
+.byok-key {
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 0.5rem;
+}
+.key-input {
+  font-family: ui-monospace, 'JetBrains Mono', monospace;
+  font-size: 0.8125rem; font-weight: 500;
+  padding: 0.75rem 1rem;
+  background: var(--surface);
+  border: 1.5px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  color: var(--ink);
+  letter-spacing: 0.04em;
+}
+.key-test {
+  font-family: var(--sans);
+  font-size: 0.75rem; font-weight: 700;
+  padding: 0.75rem 0.875rem;
+  background: var(--surface);
+  border: 1.5px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+.key-status {
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--meadow-soft);
+  border-radius: var(--radius-pill);
+  font-family: var(--sans);
+  font-size: 0.75rem; font-weight: 700;
+  color: oklch(0.32 0.10 150);
+  margin-top: 0.5rem;
+  width: fit-content;
+}
+.key-status .dot-ok {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--meadow);
+  animation: pulse 3.4s ease-in-out infinite;
+}
+
+.slider-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 0.875rem 1rem;
+}
+.slider-wrap .top {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: 0.625rem;
+}
+.slider-wrap .top .v {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 24, "SOFT" 100, "wght" 600;
+  font-size: 1.0625rem;
+  color: var(--ink);
+}
+.slider-wrap .top .v small {
+  font-family: var(--sans); font-size: 0.75rem; font-weight: 600;
+  color: var(--muted); margin-left: 0.25rem;
+}
+.slider-wrap .top .cost {
+  font-family: var(--sans); font-size: 0.6875rem; font-weight: 700;
+  color: var(--muted);
+}
+.slider-wrap .top .cost b { color: var(--accent-deep); font-weight: 800; }
+.slider {
+  height: 6px;
+  background: var(--surface-3);
+  border-radius: var(--radius-pill);
+  position: relative;
+  margin: 0.5rem 0;
+}
+.slider .fill {
+  position: absolute; top: 0; left: 0; height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  border-radius: var(--radius-pill);
+}
+.slider .handle {
+  position: absolute; top: -7px;
+  width: 20px; height: 20px;
+  background: oklch(1 0 0);
+  border: 3px solid var(--accent);
+  border-radius: 50%;
+  box-shadow: var(--shadow-card);
+  cursor: grab;
+}
+.slider-wrap .track-meta {
+  display: flex; justify-content: space-between;
+  font-family: var(--sans); font-size: 0.625rem; font-weight: 700;
+  color: var(--muted-2);
+  letter-spacing: 0.04em; text-transform: uppercase;
+}
+
+.byok-trust {
+  margin: 1rem 1.25rem 0;
+  padding: 0.875rem 1rem;
+  background: var(--meadow-soft);
+  border-radius: var(--radius-md);
+  display: flex; gap: 0.625rem; align-items: flex-start;
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 14, "SOFT" 100, "wght" 400;
+  font-style: italic; font-size: 0.8125rem;
+  color: oklch(0.32 0.10 150);
+  line-height: 1.5;
+}
+.byok-trust b { font-weight: 700; font-style: normal; }
+.byok-trust .ic {
+  flex-shrink: 0;
+  width: 22px; height: 22px;
+  background: var(--meadow);
+  color: oklch(1 0 0);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* ===== Death + Recovery ===== */
+.death-frame {
+  background: linear-gradient(180deg, oklch(0.97 0.020 258) 0%, oklch(0.95 0.025 220) 100%);
+}
+.death-head {
+  padding: 1.5rem 1.5rem 0.75rem;
+  text-align: center;
+}
+.death-head .epoch {
+  font-family: var(--sans);
+  font-size: 0.6875rem; font-weight: 800;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+}
+.death-flame {
+  width: 64px; height: 64px;
+  margin: 0 auto 1.25rem;
+  background: radial-gradient(circle at 50% 30%, var(--accent) 0%, var(--accent-deep) 60%, transparent 70%);
+  border-radius: 50%;
+  position: relative;
+  opacity: 0.4;
+  filter: blur(2px);
+}
+.death-head .h {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 120, "SOFT" 100, "wght" 400;
+  font-style: italic;
+  font-size: 1.875rem; letter-spacing: -0.025em;
+  line-height: 1.05;
+  color: var(--ink);
+  margin-bottom: 0.625rem;
+  text-wrap: balance;
+}
+.death-head .s {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 18, "SOFT" 100, "wght" 400;
+  font-style: italic;
+  font-size: 0.9375rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.death-section { padding: 0.875rem 1rem; }
+.death-card {
+  background: oklch(1 0 0);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.125rem;
+  box-shadow: var(--shadow-soft);
+}
+.death-card .head-line {
+  display: flex; align-items: center; gap: 0.5rem;
+  margin-bottom: 0.625rem;
+}
+.death-card .head-line .icon-circle {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent-deep);
+  display: flex; align-items: center; justify-content: center;
+}
+.death-card .head-line .label {
+  font-family: var(--sans);
+  font-size: 0.6875rem; font-weight: 800;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--accent-deep);
+}
+.death-card .body {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 18, "SOFT" 100, "wght" 400;
+  font-size: 0.9375rem; line-height: 1.55;
+  color: var(--ink-soft);
+}
+.death-card .body b { color: var(--ink); font-weight: 600; }
+.lost-items {
+  display: flex; flex-wrap: wrap; gap: 0.375rem;
+  margin-top: 0.5rem;
+}
+.lost-items .item {
+  font-family: var(--sans);
+  font-size: 0.75rem; font-weight: 700;
+  padding: 0.3125rem 0.625rem;
+  background: var(--bg);
+  border-radius: var(--radius-pill);
+  color: var(--ink-soft);
+  border: 1px dashed var(--border);
+}
+
+.recover-bar-row {
+  display: grid; grid-template-columns: 80px 1fr;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.4375rem 0;
+}
+.recover-bar-row .l {
+  font-family: var(--sans);
+  font-size: 0.6875rem; font-weight: 700;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--muted);
+}
+.recover-bar-row .b {
+  height: 5px;
+  background: var(--surface-3);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  position: relative;
+}
+.recover-bar-row .b .fill {
+  height: 100%;
+  background: var(--meadow);
+  border-radius: var(--radius-pill);
+}
+.recover-time {
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding-top: 0.625rem;
+  margin-top: 0.5rem;
+  border-top: 1px dashed var(--border-soft);
+}
+.recover-time .l {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 18, "SOFT" 100, "wght" 400;
+  font-style: italic; font-size: 0.875rem;
+  color: var(--muted);
+}
+.recover-time .v {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 28, "SOFT" 100, "wght" 600;
+  font-size: 1.0625rem;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.shrine-map {
+  height: 100px;
+  background: linear-gradient(160deg, oklch(0.92 0.04 220), oklch(0.93 0.05 90));
+  border-radius: var(--radius-md);
+  position: relative;
+  overflow: hidden;
+  margin-top: 0.625rem;
+}
+.shrine-map svg { width: 100%; height: 100%; }
+
+.death-footer {
+  margin-top: auto;
+  padding: 1rem 1rem 1.5rem;
+}
+
+/* Onboarding hero SVG illustration */
+.hero-illust { display: block; max-width: 200px; margin: 0 auto; }
+
 @media (max-width: 900px) {
   body { padding: 2rem 1rem 4rem; }
   .desktop-frame {
@@ -1824,26 +2501,20 @@ body {
             </div>
           </div>
 
-          <div class="status-card">
-            <div class="s-cell">
-              <div class="l">Hunger</div>
-              <div class="v">Well-fed</div>
-              <div class="bar"><div class="fill meadow" style="width:78%"></div></div>
+          <div class="feeling-card">
+            <div class="row">
+              <div class="ring"><div class="inner">K</div></div>
+              <div>
+                <div class="kicker">Kira feels</div>
+                <div class="mood-word">Unsettled, but steady</div>
+              </div>
             </div>
-            <div class="s-cell">
-              <div class="l">Stamina</div>
-              <div class="v">Tired</div>
-              <div class="bar"><div class="fill amber" style="width:38%"></div></div>
-            </div>
-            <div class="s-cell">
-              <div class="l">Health</div>
-              <div class="v">Whole</div>
-              <div class="bar"><div class="fill meadow" style="width:96%"></div></div>
-            </div>
-            <div class="s-cell">
-              <div class="l">Mood</div>
-              <div class="v">Unsettled</div>
-              <div class="bar"><div class="fill accent" style="width:52%"></div></div>
+            <div class="voice">"A debt remembered, a road open. Three days of grain left. The west smells of new earth."</div>
+            <div class="pills">
+              <span class="pill"><span class="d meadow"></span><b>Well-fed</b></span>
+              <span class="pill"><span class="d amber"></span><b>Tired</b></span>
+              <span class="pill"><span class="d meadow"></span><b>Whole</b></span>
+              <span class="pill"><span class="d accent"></span><b>Unsettled</b></span>
             </div>
           </div>
 
@@ -2435,6 +3106,451 @@ body {
           </div>
 
           <div class="signout">Sign out · ออกจากระบบ</div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ============================ Onboarding ============================ -->
+  <h2>Onboarding <small>first-time flow · four steps to a soul in the world</small></h2>
+
+  <div class="mobile-grid">
+
+    <!-- O1 — Welcome + Language -->
+    <div class="frame-wrap">
+      <div class="frame-label"><span class="dot"></span>1. Welcome — choose language</div>
+      <div class="mobile-frame onboard-frame">
+        <div class="onboard-skip">
+          <div class="step">Step 1 of 4</div>
+          <button class="skip">Sign in</button>
+        </div>
+        <div class="onboard-stepper">
+          <div class="seg now"></div>
+          <div class="seg"></div>
+          <div class="seg"></div>
+          <div class="seg"></div>
+        </div>
+
+        <div class="screen-content" style="display:flex;flex-direction:column">
+
+          <div class="onboard-art">
+            <svg class="hero-illust" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="sun" cx="0.5" cy="0.5">
+                  <stop offset="0" stop-color="oklch(0.85 0.18 50)"/>
+                  <stop offset="1" stop-color="oklch(0.85 0.18 50 / 0)"/>
+                </radialGradient>
+              </defs>
+              <circle cx="100" cy="60" r="50" fill="url(#sun)"/>
+              <circle cx="100" cy="60" r="18" fill="oklch(0.78 0.16 50)"/>
+              <path d="M0,120 Q40,100 80,110 Q120,118 160,100 Q180,95 200,105 L200,160 L0,160 Z" fill="oklch(0.65 0.13 150)" opacity="0.4"/>
+              <path d="M0,135 Q50,120 100,128 Q150,135 200,125 L200,160 L0,160 Z" fill="oklch(0.45 0.12 150)" opacity="0.5"/>
+              <path d="M0,148 Q60,140 120,144 Q170,148 200,142 L200,160 L0,160 Z" fill="oklch(0.30 0.10 150)" opacity="0.5"/>
+              <g fill="oklch(0.85 0.05 50)" opacity="0.8">
+                <circle cx="55" cy="138" r="2"/><circle cx="100" cy="142" r="2"/><circle cx="150" cy="138" r="2"/>
+              </g>
+            </svg>
+          </div>
+
+          <div class="onboard-body">
+            <div class="h">Welcome to <em>Shocky Topia</em></div>
+            <div class="sub">A small kingdom that keeps writing while you sleep. You'll raise a soul, not a soldier.</div>
+          </div>
+
+          <div class="onboard-options">
+            <div class="onb-field-label">Choose your language · เลือกภาษา</div>
+            <div class="lang-picker">
+              <div class="opt-card selected">
+                <div class="lang-name" style="font-family:var(--serif)">ไทย</div>
+                <div class="lang-sub">ภาษาไทย</div>
+              </div>
+              <div class="opt-card">
+                <div class="lang-name">English</div>
+                <div class="lang-sub">English</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="onboard-footer">
+            <button class="onboard-cta">เริ่มต้น · Begin</button>
+            <button class="onboard-secondary">มีบัญชีอยู่แล้ว · I have an account</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- O2 — Create Character -->
+    <div class="frame-wrap">
+      <div class="frame-label"><span class="dot"></span>2. Create character</div>
+      <div class="mobile-frame onboard-frame">
+        <div class="onboard-skip">
+          <div class="step">Step 2 of 4</div>
+          <button class="skip">Back</button>
+        </div>
+        <div class="onboard-stepper">
+          <div class="seg done"></div>
+          <div class="seg now"></div>
+          <div class="seg"></div>
+          <div class="seg"></div>
+        </div>
+
+        <div class="screen-content" style="display:flex;flex-direction:column">
+
+          <div class="onboard-body">
+            <div class="h">ใครคือคนที่จะ <em>ใช้ชีวิตแทนคุณ</em>?</div>
+            <div class="sub">Who will live this life on your behalf? Choose a name and a kindred.</div>
+          </div>
+
+          <div style="display:flex;justify-content:center;padding:0.5rem 0 1.5rem">
+            <div class="account-hero" style="padding:0">
+              <div class="ava-xl" style="margin-bottom:0.5rem">K</div>
+            </div>
+          </div>
+
+          <div class="onboard-options" style="padding-top:0">
+            <div class="onb-field-label">Name · ชื่อ</div>
+            <input type="text" class="onb-input" value="Kira of Three Rivers">
+
+            <div class="onb-field-label" style="margin-top:1rem">Kindred · เผ่าพันธุ์</div>
+            <div class="opt-card selected">
+              <div class="icon">H</div>
+              <div class="text">Human <small>· เรียนรู้เร็ว, ปรับตัวดี, อายุยืนเพราะ The Blessing</small></div>
+              <div class="check">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>
+              </div>
+            </div>
+            <div class="opt-card" style="opacity:0.5;cursor:not-allowed">
+              <div class="icon" style="background:var(--surface-3);color:var(--muted)">E</div>
+              <div class="text">Elf, Dwarf, Beastkin <small>· มาในอนาคต — Phase 1</small></div>
+            </div>
+          </div>
+
+          <div class="onboard-footer">
+            <button class="onboard-cta">Continue · ต่อไป</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- O3 — Write the Will -->
+    <div class="frame-wrap">
+      <div class="frame-label"><span class="dot"></span>3. Inscribe a will</div>
+      <div class="mobile-frame onboard-frame">
+        <div class="onboard-skip">
+          <div class="step">Step 3 of 4</div>
+          <button class="skip">Back</button>
+        </div>
+        <div class="onboard-stepper">
+          <div class="seg done"></div>
+          <div class="seg done"></div>
+          <div class="seg now"></div>
+          <div class="seg"></div>
+        </div>
+
+        <div class="screen-content" style="display:flex;flex-direction:column">
+
+          <div class="onboard-body">
+            <div class="h">เขียน <em>ตัวตน</em> ไม่ใช่คำสั่ง</div>
+            <div class="sub">A self that holds when no one is watching. The Agent will read this every decision; in lean times, only this guides the body.</div>
+          </div>
+
+          <div class="onboard-options" style="padding-bottom:0.5rem">
+            <div class="onb-field-label">Identity · ตัวตน</div>
+            <textarea class="onb-textarea" rows="4">พ่อค้าหญิงจาก Three Rivers ผู้จำทุกคำสัญญา รักสันติแต่ไม่ลืมหนี้ กลัวความจนมากกว่ากลัวตาย</textarea>
+            <div class="onb-hint">A sentence or two. What would a stranger remember? You can add goal, values, and fears after stepping into the world.</div>
+          </div>
+
+          <div class="onboard-footer">
+            <button class="onboard-cta">Inscribe · จารึก</button>
+            <button class="onboard-secondary">เขียนละเอียดกว่านี้ · Write in detail</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- O4 — BYOK Quick Connect -->
+    <div class="frame-wrap">
+      <div class="frame-label"><span class="dot"></span>4. Bring your AI</div>
+      <div class="mobile-frame onboard-frame">
+        <div class="onboard-skip">
+          <div class="step">Step 4 of 4</div>
+          <button class="skip">Back</button>
+        </div>
+        <div class="onboard-stepper">
+          <div class="seg done"></div>
+          <div class="seg done"></div>
+          <div class="seg done"></div>
+          <div class="seg now"></div>
+        </div>
+
+        <div class="screen-content" style="display:flex;flex-direction:column">
+
+          <div class="onboard-body">
+            <div class="h">นำ AI ของคุณมา <em>เลี้ยงเจตจำนง</em></div>
+            <div class="sub">Your key powers your character's brain. Stored encrypted, used only for Kira, revocable any moment.</div>
+          </div>
+
+          <div class="byok-section">
+            <div class="label-row">
+              <span class="l">Provider · ผู้ให้บริการ</span>
+              <a href="#" class="hint-link">How to get a key?</a>
+            </div>
+            <div class="providers">
+              <div class="provider-card selected">
+                <div class="glyph anth">A</div>
+                <div class="name">Claude</div>
+              </div>
+              <div class="provider-card">
+                <div class="glyph goog">G</div>
+                <div class="name">Gemini</div>
+              </div>
+              <div class="provider-card">
+                <div class="glyph open">O</div>
+                <div class="name">GPT</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="byok-section">
+            <div class="label-row"><span class="l">API key</span></div>
+            <input type="password" class="key-input" value="sk-ant-••••••••••••••••••••e4f2" style="width:100%">
+            <div class="key-status">
+              <span class="dot-ok"></span>
+              Connected · Anthropic key valid
+            </div>
+          </div>
+
+          <div class="onboard-footer">
+            <button class="onboard-cta">เริ่มใช้ชีวิต · Step into the world</button>
+            <button class="onboard-secondary">ข้ามก่อน — เล่นด้วย Instinct Mode</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ============================ Edge moments ============================ -->
+  <h2>Edge moments <small>BYOK detailed setup · death &amp; recovery</small></h2>
+
+  <div class="mobile-grid">
+
+    <!-- BYOK detailed setup -->
+    <div class="frame-wrap">
+      <div class="frame-label"><span class="dot"></span>BYOK — detailed setup</div>
+      <div class="mobile-frame byok-frame">
+        <div class="account-back">
+          <div class="back">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+          </div>
+          <div class="title">Key &amp; Budget</div>
+        </div>
+
+        <div class="screen-content">
+
+          <div class="byok-head">
+            <div class="h">Your AI vessel</div>
+            <div class="s">The key that powers Kira's brain. Stored encrypted. Revoke any moment.</div>
+          </div>
+
+          <div class="byok-section">
+            <div class="label-row">
+              <span class="l">Provider</span>
+              <a href="#" class="hint-link">All providers →</a>
+            </div>
+            <div class="providers">
+              <div class="provider-card selected">
+                <div class="glyph anth">A</div>
+                <div class="name">Claude</div>
+              </div>
+              <div class="provider-card">
+                <div class="glyph goog">G</div>
+                <div class="name">Gemini</div>
+              </div>
+              <div class="provider-card">
+                <div class="glyph open">O</div>
+                <div class="name">GPT</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="byok-section">
+            <div class="label-row">
+              <span class="l">Model</span>
+              <span style="font-family:var(--sans);font-size:0.6875rem;font-weight:700;color:var(--muted)">~$0.012 / decision</span>
+            </div>
+            <div class="slider-wrap">
+              <div class="top">
+                <div class="v">Claude Sonnet 4.6</div>
+                <div class="cost"><b>$2.40</b> / day est.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="byok-section">
+            <div class="label-row"><span class="l">API key</span></div>
+            <div class="byok-key">
+              <input type="password" class="key-input" value="sk-ant-••••••••••••••e4f2">
+              <button class="key-test">Test</button>
+            </div>
+            <div class="key-status">
+              <span class="dot-ok"></span>
+              Valid · last verified 2 min ago
+            </div>
+          </div>
+
+          <div class="byok-section">
+            <div class="label-row"><span class="l">Daily token cap</span></div>
+            <div class="slider-wrap">
+              <div class="top">
+                <div class="v">200,000 <small>tokens</small></div>
+                <div class="cost"><b>$2.40</b> / day</div>
+              </div>
+              <div class="slider">
+                <div class="fill" style="width:40%"></div>
+                <div class="handle" style="left:calc(40% - 10px)"></div>
+              </div>
+              <div class="track-meta">
+                <span>50k</span>
+                <span>500k</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="byok-section">
+            <div class="label-row"><span class="l">Decision frequency</span></div>
+            <div class="slider-wrap">
+              <div class="top">
+                <div class="v">ทุก 10 นาที <small>real time</small></div>
+                <div class="cost">~144 / day</div>
+              </div>
+              <div class="slider">
+                <div class="fill" style="width:55%"></div>
+                <div class="handle" style="left:calc(55% - 10px)"></div>
+              </div>
+              <div class="track-meta">
+                <span>1 min · responsive</span>
+                <span>60 min · patient</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="byok-trust">
+            <span class="ic">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>
+            </span>
+            <div><b>Stored encrypted</b> in Supabase Vault. Used only for Kira's decisions. Revoke or replace any moment — your character continues in Instinct Mode meanwhile.</div>
+          </div>
+
+          <div class="onboard-footer" style="padding-top:1rem">
+            <button class="onboard-cta" style="background:var(--primary);box-shadow:0 10px 24px oklch(0.55 0.18 258 / 0.30)">Save changes</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Death + Recovery -->
+    <div class="frame-wrap">
+      <div class="frame-label"><span class="dot"></span>Death — fallen, will rise</div>
+      <div class="mobile-frame death-frame">
+        <div class="topbar">
+          <div class="gametime-chip">
+            <span class="pulse"></span>
+            <b>Year 42</b><span class="sep">·</span>Winter<span class="sep">·</span>Day 27
+          </div>
+          <div class="avatar">K</div>
+        </div>
+
+        <div class="screen-content" style="display:flex;flex-direction:column">
+
+          <div class="death-head">
+            <div class="epoch">A turning of the chronicle</div>
+            <div class="death-flame"></div>
+            <div class="h">Kira has fallen.</div>
+            <div class="s">In the Ash Vale, by Ironhold steel.<br>The body returns to earth. The will endures.</div>
+          </div>
+
+          <div class="death-section">
+            <div class="death-card">
+              <div class="head-line">
+                <span class="icon-circle">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+                </span>
+                <span class="label">What was lost</span>
+              </div>
+              <div class="body">Dropped where she fell. Settlement inventory untouched.</div>
+              <div class="lost-items">
+                <span class="item">4 winter grain</span>
+                <span class="item">1 steel ingot</span>
+                <span class="item">iron knife</span>
+                <span class="item">letter from Bren</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="death-section">
+            <div class="death-card">
+              <div class="head-line">
+                <span class="icon-circle" style="background:var(--meadow-soft);color:oklch(0.32 0.10 150)">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M12 22v-2M4.93 4.93l4.24 4.24M14.83 14.83l4.24 4.24M2 12h6M22 12h-2"/></svg>
+                </span>
+                <span class="label" style="color:oklch(0.32 0.10 150)">Recovery</span>
+              </div>
+              <div class="recover-bar-row">
+                <span class="l">Skills</span>
+                <span class="b"><span class="fill" style="width:36%"></span></span>
+              </div>
+              <div class="recover-bar-row">
+                <span class="l">Stamina</span>
+                <span class="b"><span class="fill" style="width:48%"></span></span>
+              </div>
+              <div class="recover-bar-row">
+                <span class="l">Mood</span>
+                <span class="b"><span class="fill" style="width:20%"></span></span>
+              </div>
+              <div class="recover-time">
+                <span class="l">Full strength returns in</span>
+                <span class="v">2h 14m</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="death-section">
+            <div class="death-card">
+              <div class="head-line">
+                <span class="icon-circle" style="background:var(--primary-soft);color:var(--primary-deep)">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-7-7-12a7 7 0 0 1 14 0c0 5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+                </span>
+                <span class="label" style="color:var(--primary-deep)">Where to begin again</span>
+              </div>
+              <div class="body"><b>Three Rivers Shrine</b>, by the eastern oak. Bound here when you joined the world.</div>
+              <div class="shrine-map">
+                <svg viewBox="0 0 360 100" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0,50 Q100,30 200,55 Q300,75 360,55 L360,100 L0,100 Z" fill="oklch(0.86 0.07 150)" opacity="0.5"/>
+                  <path d="M0,70 Q120,60 240,75 Q300,80 360,70 L360,100 L0,100 Z" fill="oklch(0.75 0.13 150)" opacity="0.45"/>
+                  <ellipse cx="220" cy="75" rx="40" ry="14" fill="oklch(0.88 0.07 230)" opacity="0.85"/>
+                  <g transform="translate(180,52)">
+                    <circle cx="0" cy="0" r="9" fill="oklch(1 0 0)" stroke="var(--primary)" stroke-width="1.5"/>
+                    <path d="M0,-5 L-3,-1 L-3,4 L3,4 L3,-1 Z" fill="var(--primary)"/>
+                    <line x1="0" y1="-8" x2="0" y2="-5" stroke="var(--primary)" stroke-width="1"/>
+                  </g>
+                  <text x="180" y="38" font-family="Fraunces, serif" font-size="9" font-style="italic" text-anchor="middle" fill="var(--primary-deep)">Shrine</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="death-footer">
+            <button class="onboard-cta">Step back into the world</button>
+            <button class="onboard-secondary">Read in Chronicle</button>
+          </div>
 
         </div>
       </div>
